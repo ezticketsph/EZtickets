@@ -212,9 +212,7 @@
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.4);
       color: var(--text-soft);
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.98));
     }
 
     .hero-cta-row {
@@ -305,9 +303,7 @@
       padding: 4px 9px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.35);
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
-        rgba(15, 23, 42, 0.92);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .pill-kpi-label {
@@ -373,10 +369,8 @@
       font-size: 11px;
       padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.6), transparent 55%),
-        rgba(8, 47, 73, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(8, 47, 73, 0.8);
       color: #e0f2fe;
     }
 
@@ -402,9 +396,7 @@
       border-radius: 999px;
       border: 1px solid rgba(74, 222, 128, 0.4);
       color: #bbf7d0;
-      background:
-        radial-gradient(circle at top left, rgba(34, 197, 94, 0.55), transparent 55%),
-        rgba(22, 101, 52, 0.28);
+      background: rgba(22, 101, 52, 0.2);
       margin-bottom: 10px;
     }
 
@@ -504,25 +496,19 @@
       padding: 6px 9px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.55);
-      background:
-        radial-gradient(circle at top left, rgba(148, 163, 184, 0.35), transparent 55%),
-        rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--text-soft);
     }
 
     .portal-status.success {
       border-color: rgba(74, 222, 128, 0.8);
-      background:
-        radial-gradient(circle at top left, rgba(34, 197, 94, 0.7), transparent 55%),
-        rgba(22, 101, 52, 0.45);
+      background: rgba(22, 101, 52, 0.3);
       color: #bbf7d0;
     }
 
     .portal-status.error {
       border-color: rgba(248, 113, 113, 0.9);
-      background:
-        radial-gradient(circle at top left, rgba(248, 113, 113, 0.65), transparent 55%),
-        rgba(127, 29, 29, 0.5);
+      background: rgba(127, 29, 29, 0.42);
       color: #fecaca;
     }
 
@@ -547,13 +533,16 @@
 
     .pill-mini {
       font-size: 11px;
-      padding: 3px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      border: 1px solid rgba(56, 189, 248, 0.6);
       color: var(--text-soft);
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.4), transparent 55%),
-        rgba(15, 23, 42, 0.9);
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.5), transparent 60%),
+        rgba(15, 23, 42, 0.96);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 10px 25px rgba(15, 23, 42, 0.9);
     }
 
     .layout-main {
@@ -584,8 +573,7 @@
       padding: 6px 9px;
       border-radius: 999px;
       border: 1px dashed rgba(148, 163, 184, 0.45);
-      background:
-        radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
     }
 
     .event-main {
@@ -608,11 +596,9 @@
       font-size: 11px;
       padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.5);
       color: #e0f2fe;
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.75), transparent 55%),
-        rgba(8, 47, 73, 0.9);
+      background: rgba(8, 47, 73, 0.7);
     }
 
     footer {
@@ -647,9 +633,7 @@
       padding: 8px 10px;
       border-radius: 14px;
       border: 1px dashed rgba(148, 163, 184, 0.45);
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 55%),
-        rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.8);
     }
   </style>
 </head>
@@ -970,9 +954,6 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // 🔗 UPDATE THIS WITH YOUR LATEST WEB APP URL ("/exec")
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec";
-
       // Footer year
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1038,20 +1019,42 @@
 
           showStatus("", "Submitting your request...");
 
-          // Use FormData so swak siya sa typical Apps Script (e.parameter)
-          const formData = new FormData(form);
+          const payload = {
+            firstName: document.getElementById("first-name").value.trim(),
+            lastName: document.getElementById("last-name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            eventName: document.getElementById("event-name").value.trim(),
+            ticketPlatform: platformSelect.value,
+            paymentMethod: document.getElementById("payment-method").value,
+            notes: document.getElementById("notes").value.trim()
+          };
 
-          fetch(SCRIPT_URL, {
+          if (platformSelect.value === "SM Tickets") {
+            payload.smUsername = document.getElementById("sm-username").value.trim();
+            payload.smPassword = document.getElementById("sm-password").value.trim();
+          } else if (platformSelect.value === "TicketNet") {
+            payload.ticketnetEmail = document.getElementById("ticketnet-email").value.trim();
+            payload.ticketnetPassword = document.getElementById("ticketnet-password").value.trim();
+            payload.ticketnetBilling = document.getElementById("ticketnet-billing").value.trim();
+            payload.ticketnetPhone = document.getElementById("ticketnet-phone").value.trim();
+          } else if (platformSelect.value === "PULP Tickets") {
+            payload.pulpUsername = document.getElementById("pulp-username").value.trim();
+            payload.pulpPassword = document.getElementById("pulp-password").value.trim();
+          }
+
+          fetch("https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec", {
             method: "POST",
-            body: formData
+            mode: "no-cors",
+            body: (function () {
+              var formData = new FormData();
+              Object.keys(payload).forEach(function (key) {
+                if (payload[key] !== undefined && payload[key] !== null) {
+                  formData.append(key, payload[key]);
+                }
+              });
+              return formData;
+            })()
           })
-            .then(function (response) {
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-              // Most Apps Script web apps just return text/html, so we don't need to parse JSON
-              return response.text();
-            })
             .then(function () {
               showStatus("success", "Request submitted! Please watch your email / Discord for updates.");
               form.reset();
