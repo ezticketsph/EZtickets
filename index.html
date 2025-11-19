@@ -370,7 +370,9 @@
       padding: 4px 9px;
       border-radius: 999px;
       border: 1px solid rgba(56, 189, 248, 0.35);
-      background: rgba(8, 47, 73, 0.8);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.45), transparent 55%),
+        rgba(8, 47, 73, 0.9);
       color: #e0f2fe;
     }
 
@@ -394,9 +396,11 @@
       font-size: 11px;
       padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(74, 222, 128, 0.4);
+      border: 1px solid rgba(74, 222, 128, 0.5);
       color: #bbf7d0;
-      background: rgba(22, 101, 52, 0.2);
+      background:
+        radial-gradient(circle at top left, rgba(74, 222, 128, 0.35), transparent 60%),
+        rgba(22, 101, 52, 0.35);
       margin-bottom: 10px;
     }
 
@@ -533,16 +537,13 @@
 
     .pill-mini {
       font-size: 11px;
-      padding: 3px 10px;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.65);
       color: var(--text-soft);
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.5), transparent 60%),
+        radial-gradient(circle at top left, rgba(148, 163, 184, 0.45), transparent 55%),
         rgba(15, 23, 42, 0.96);
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.9),
-        0 10px 25px rgba(15, 23, 42, 0.9);
     }
 
     .layout-main {
@@ -969,7 +970,7 @@
       function setRequiredForSection(sectionEl, required) {
         if (!sectionEl) return;
         const inputs = sectionEl.querySelectorAll("input, select, textarea");
-        inputs.forEach(el => {
+        inputs.forEach(function (el) {
           if (required) {
             el.setAttribute("required", "required");
           } else {
@@ -979,24 +980,28 @@
       }
 
       function updatePlatformFields() {
-        smFields.style.display = "none";
-        ticketnetFields.style.display = "none";
-        pulpFields.style.display = "none";
+        if (!platformSelect) return;
 
+        // Hide all sections
+        [smFields, ticketnetFields, pulpFields].forEach(function (section) {
+          if (section) section.style.display = "none";
+        });
+
+        // Reset required
         setRequiredForSection(smFields, false);
         setRequiredForSection(ticketnetFields, false);
         setRequiredForSection(pulpFields, false);
 
-        const value = platformSelect.value;
+        var value = platformSelect.value;
 
         if (value === "SM Tickets") {
-          smFields.style.display = "block";
+          if (smFields) smFields.style.display = "block";
           setRequiredForSection(smFields, true);
         } else if (value === "TicketNet") {
-          ticketnetFields.style.display = "block";
+          if (ticketnetFields) ticketnetFields.style.display = "block";
           setRequiredForSection(ticketnetFields, true);
         } else if (value === "PULP Tickets") {
-          pulpFields.style.display = "block";
+          if (pulpFields) pulpFields.style.display = "block";
           setRequiredForSection(pulpFields, true);
         }
       }
@@ -1008,9 +1013,10 @@
 
       function showStatus(type, message) {
         if (!statusEl) return;
-        statusEl.style.display = "block";
-        statusEl.textContent = message;
-        statusEl.className = "portal-status" + (type ? " " + type : "");
+        statusEl.style.display = message ? "block" : "none";
+        statusEl.textContent = message || "";
+        var baseClass = "portal-status";
+        statusEl.className = type ? baseClass + " " + type : baseClass;
       }
 
       if (form) {
@@ -1019,44 +1025,47 @@
 
           showStatus("", "Submitting your request...");
 
-          const payload = {
+          var payload = {
             firstName: document.getElementById("first-name").value.trim(),
             lastName: document.getElementById("last-name").value.trim(),
             email: document.getElementById("email").value.trim(),
             eventName: document.getElementById("event-name").value.trim(),
-            ticketPlatform: platformSelect.value,
+            ticketPlatform: platformSelect ? platformSelect.value : "",
             paymentMethod: document.getElementById("payment-method").value,
             notes: document.getElementById("notes").value.trim()
           };
 
-          if (platformSelect.value === "SM Tickets") {
+          if (platformSelect && platformSelect.value === "SM Tickets") {
             payload.smUsername = document.getElementById("sm-username").value.trim();
             payload.smPassword = document.getElementById("sm-password").value.trim();
-          } else if (platformSelect.value === "TicketNet") {
+          } else if (platformSelect && platformSelect.value === "TicketNet") {
             payload.ticketnetEmail = document.getElementById("ticketnet-email").value.trim();
             payload.ticketnetPassword = document.getElementById("ticketnet-password").value.trim();
             payload.ticketnetBilling = document.getElementById("ticketnet-billing").value.trim();
             payload.ticketnetPhone = document.getElementById("ticketnet-phone").value.trim();
-          } else if (platformSelect.value === "PULP Tickets") {
+          } else if (platformSelect && platformSelect.value === "PULP Tickets") {
             payload.pulpUsername = document.getElementById("pulp-username").value.trim();
             payload.pulpPassword = document.getElementById("pulp-password").value.trim();
           }
 
-          fetch("https://script.google.com/macros/s/AKfycbwROgav68Jgb7biWKsJgIMrQw-DyfFeeDm4iKOnqGprxzd5ZYsCLsMp1p17Fi0LLzoq/exec", {
+          fetch("https://script.google.com/macros/s/AKfycby72YI1ptNrG7NjdpTocbGrHX-3veJ0TVQiWOkWCCgCXkvFPqkZ1W3g8xkZ2AgUgVZS/exec", {
             method: "POST",
-            mode: "no-cors",
-            body: (function () {
-              var formData = new FormData();
-              Object.keys(payload).forEach(function (key) {
-                if (payload[key] !== undefined && payload[key] !== null) {
-                  formData.append(key, payload[key]);
-                }
-              });
-              return formData;
-            })()
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
           })
-            .then(function () {
-              showStatus("success", "Request submitted! Please watch your email / Discord for updates.");
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json().catch(function () { return {}; });
+            })
+            .then(function (data) {
+              var msg = data && data.message
+                ? data.message
+                : "Request submitted! Please watch your email / Discord for updates.";
+              showStatus("success", msg);
               form.reset();
               updatePlatformFields();
             })
