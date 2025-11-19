@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>EZ Tickets MNL| Ticketing Assistance</title>
+  <title>EZ Tickets | Ticketing Assistance</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
@@ -453,24 +453,7 @@
       gap: 0.4rem;
     }
 
-    
-    .conditional-group {
-      margin-top: 0.5rem;
-      padding: 0.6rem 0.75rem;
-      border-radius: var(--radius);
-      border: 1px dashed var(--border);
-      background: rgba(15, 23, 42, 0.7);
-    }
-
-    .conditional-group-title {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-soft);
-      margin-bottom: 0.25rem;
-    }
-
-.small-hint {
+    .small-hint {
       font-size: 0.72rem;
       color: var(--muted);
       margin-top: 0.1rem;
@@ -500,6 +483,16 @@
       border-radius: 8px;
       border: 1px dashed var(--border);
       background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Platform extras */
+    .platform-extra {
+      display: none;
+      margin-top: 0.3rem;
+    }
+
+    .platform-extra .form-row-2 {
+      margin-top: 0.2rem;
     }
 
     /* Payments */
@@ -584,10 +577,10 @@
   <div class="page">
     <header>
       <div class="logo">
-        <div class="logo-mark">LT</div>
+        <div class="logo-mark">EZ</div>
         <div>
-          <div class="logo-text-title">EZ Tickets MNL</div>
-          <div class="logo-text-sub">Concerts · Events · Pre-sale Access</div>
+          <div class="logo-text-title">EZ Tickets</div>
+          <div class="logo-text-sub">Manila · Concerts · Events · Pre-sale Access</div>
         </div>
       </div>
       <nav>
@@ -605,26 +598,27 @@
         <div>
           <div class="badge">
             <span class="badge-dot"></span>
-            <span>PH-based Ticketing Assistance · No Downpayment · Legit - Hassle-free · 99% Success Rate</span>
+            <span>PH-based Ticketing Assistance · No Downpayment · Hassle-free · 99% Success Rate</span>
           </div>
           <h1>
             Hassle-free
             <span class="hero-highlight">ticket assistance</span>
-            for concerts & events you can’t miss.
+            for concerts and events you can’t miss.
           </h1>
           <p>
-            <span class="hero-highlight">ALWAYS MISSING OUT ON GOOD SEATS</span> 
-			for your preferred events? We Got you. 
-			<span class="hero-highlight">NO MORE LINES. NO MORE QUEUES.</span> 
-			<span class="hero-highlight">Keep getting scammed by scalpers?</span> 
-			Worry no more. We have more than 500+ references - real people, real fans.
+            <span class="hero-highlight">Always missing out on good seats</span>
+            for your favorite events? We’ve got you.
+            <span class="hero-highlight">No more lines. No more queues.</span>
+			Just sit back, relax and let us do the work.
+            Tired of getting scammed by scalpers?
+            Our <span class="hero-highlight">500+ real clients and fans</span> can vouch for us.
           </p>
 
           <div class="hero-bullets">
-            <span class="chip">✔ Online Queueing</span>
-            <span class="chip">✔ Priority on High-demand Events</span>
-            <span class="chip">✔ NO DOWNPAYMENT - No tickets = No FEES</span>
-            <span class="chip">✔ Multiple Payment Options</span>
+            <span class="chip">✔ Online queueing done for you</span>
+            <span class="chip">✔ Priority for high-demand events</span>
+            <span class="chip">✔ No downpayment – no ticket, no fee</span>
+            <span class="chip">✔ Multiple payment options</span>
           </div>
 
           <div class="hero-actions">
@@ -632,12 +626,12 @@
               View Available Events →
             </button>
             <button class="btn-ghost" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-              Book / Track My Order
+              Order Now
             </button>
           </div>
 
           <div class="hero-note">
-            Same-day inquiries responded within <strong>24 hours</strong> via email or Messenger.
+            Same-day inquiries are answered within <strong>24 hours</strong> Viber or Messenger.
           </div>
         </div>
 
@@ -671,7 +665,7 @@
               </div>
               <div class="hero-kpi">
                 <strong>ETA:</strong> E-ticket release 3–5 days after official sale.<br />
-                You’ll receive updates via email + Messenger.
+                You’ll receive updates via email and Messenger.
               </div>
             </div>
           </div>
@@ -684,11 +678,11 @@
           <div>
             <div class="section-title">Services Offered</div>
             <div class="section-sub">
-              Done-for-you ticket assistance for high-demand concerts, fanmeets, festivals, and more.
+              Done-for-you ticket assistance for high-demand concerts, fan meets, festivals, and more.
             </div>
           </div>
           <div class="section-header-right">
-            Fully managed process — from queueing up to final ticket confirmation.
+            Fully managed process — from queueing to checkout page.
           </div>
         </div>
 
@@ -697,28 +691,14 @@
             <h3>Online Ticketing Assistance</h3>
             <p>
               We handle the entire online checkout flow on your behalf during ticket selling time
-              (desktop + mobile).
+              (desktop and mobile).
             </p>
             <div class="pill-row">
-              <span>Presales</span><span>General On-sale</span><span>Multiple devices</span>
+              <span>Pre-sales</span><span>General on-sale</span><span>Multiple devices</span>
             </div>
             <div class="card-footer">
-              <span>Ideal for: Busy fans & resellers</span>
+              <span>Ideal for: Busy fans and resellers</span>
               <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">Book now →</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>VIP / Fan Club Coordination</h3>
-            <p>
-              Assistance with fan club pre-sales, membership codes
-            </p>
-            <div class="pill-row">
-              <span>Fan club</span><span>Pre-sale</span>
-            </div>
-            <div class="card-footer">
-              <span>Custom arrangements per group</span>
-              <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Talk to us →</button>
             </div>
           </div>
         </div>
@@ -746,7 +726,7 @@
               <span>VIP Standing</span><span>Lower Box</span><span>Upper Box</span>
             </div>
             <div class="card-footer">
-              <span>From ₱4,500 · Limited Slots</span>
+              <span>From ₱4,500 · Limited slots</span>
               <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
                 Request tickets →
               </button>
@@ -768,7 +748,7 @@
           </div>
 
           <div class="card">
-            <h3>Fanmeet – SM North EDSA</h3>
+            <h3>Fan Meet – SM North EDSA</h3>
             <p>📍 SM North · 📅 Feb 03, 2026</p>
             <div class="pill-row">
               <span>Hi-touch</span><span>Photo op</span><span>Signed merch</span>
@@ -793,7 +773,7 @@
             </div>
           </div>
           <div class="section-header-right">
-            Demo only – you can later connect this to Google Sheets / Forms / your CRM.
+            Demo only – you can later connect this to Google Sheets, Forms, or your CRM.
           </div>
         </div>
 
@@ -804,18 +784,18 @@
             <form id="new-order-form">
               <div class="form-row-2">
                 <div>
-                  <label for="firstName">First Name</label>
-                  <input id="firstName" name="firstName" required />
+                  <label for="first-name">First Name</label>
+                  <input id="first-name" name="firstName" required />
                 </div>
                 <div>
-                  <label for="lastName">Last Name</label>
-                  <input id="lastName" name="lastName" required />
+                  <label for="last-name">Last Name</label>
+                  <input id="last-name" name="lastName" required />
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div>
-                  <label for="email">Email</label>
+                  <label for="email">Email Address</label>
                   <input id="email" name="email" type="email" required />
                 </div>
                 <div>
@@ -826,89 +806,93 @@
 
               <div class="form-row-2">
                 <div>
-                  <label for="tickets">No. of Tickets</label>
-                  <input id="tickets" name="tickets" type="number" min="1" value="1" required />
+                  <label for="section">Preferred Section</label>
+                  <input id="section" name="section" placeholder="e.g. VIP, Lower Box, Gen Ad" />
                 </div>
                 <div>
-                  <label for="section">Preferred Section / Seating</label>
-                  <input id="section" name="section" placeholder="e.g. VIP 1, Lower Box A, etc." />
+                  <label for="tickets">Number of Tickets</label>
+                  <input id="tickets" name="tickets" type="number" min="1" value="1" required />
+                </div>
+              </div>
+
+              <div>
+                <label for="platform">Ticketing Platform</label>
+                <select id="platform" name="platform" required>
+                  <option value="">Select platform</option>
+                  <option value="sm">SM Tickets</option>
+                  <option value="ticketnet">Ticketnet</option>
+                  <option value="pulp">Pulp Tickets</option>
+                </select>
+                <div class="small-hint">
+                  We will use your actual ticketing account details securely during the buying window.
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div>
-                  <label for="ticketPlatform">Ticketing Platform</label>
-                  <select id="ticketPlatform" name="ticketPlatform" required>
-                    <option value="" disabled selected>Select platform</option>
-                    <option value="SM_TICKETS">SM Tickets</option>
-                    <option value="TICKETNET">TicketNet</option>
-                    <option value="PULP_TICKETS">PULP Tickets</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="paymentMethod">Preferred Payment Method</label>
-                  <select id="paymentMethod" name="paymentMethod" required>
-                    <option value="" disabled selected>Select payment method</option>
-                    <option value="GCASH">GCash</option>
-                    <option value="MAYA">Maya</option>
-                    <option value="CARD">Credit / Debit Card</option>
-                    <option value="BANK_TRANSFER">Bank Transfer</option>
+                  <label for="payment-method">Payment Method</label>
+                  <select id="payment-method" name="paymentMethod" required>
+                    <option value="">Select payment method</option>
+                    <option value="gcash">GCash</option>
+                    <option value="maya">Maya</option>
+                    <option value="card">Credit Card</option>
+                    <option value="bank">Bank Transfer</option>
                   </select>
                 </div>
               </div>
 
-              <div id="sm-fields" class="conditional-group" style="display:none;">
-                <div class="conditional-group-title">SM Tickets Account Details</div>
+              <!-- SM Tickets extra fields -->
+              <div class="platform-extra" data-platform="sm">
                 <div class="form-row-2">
                   <div>
-                    <label for="smUsername">SM Tickets Username</label>
-                    <input id="smUsername" name="smUsername" autocomplete="off" />
+                    <label for="sm-username">SM Tickets Username</label>
+                    <input id="sm-username" name="smUsername" />
                   </div>
                   <div>
-                    <label for="smPassword">SM Tickets Password</label>
-                    <input id="smPassword" name="smPassword" type="password" autocomplete="off" />
+                    <label for="sm-password">SM Tickets Password</label>
+                    <input id="sm-password" name="smPassword" type="password" />
                   </div>
                 </div>
               </div>
 
-              <div id="ticketnet-fields" class="conditional-group" style="display:none;">
-                <div class="conditional-group-title">TicketNet Account Details</div>
+              <!-- Ticketnet extra fields -->
+              <div class="platform-extra" data-platform="ticketnet">
                 <div class="form-row-2">
                   <div>
-                    <label for="ticketnetAccount">TicketNet Email / Username</label>
-                    <input id="ticketnetAccount" name="ticketnetAccount" autocomplete="off" />
+                    <label for="tn-account">Ticketnet Email / Username</label>
+                    <input id="tn-account" name="tnAccount" />
                   </div>
                   <div>
-                    <label for="ticketnetPassword">TicketNet Password</label>
-                    <input id="ticketnetPassword" name="ticketnetPassword" type="password" autocomplete="off" />
+                    <label for="tn-password">Ticketnet Password</label>
+                    <input id="tn-password" name="tnPassword" type="password" />
                   </div>
                 </div>
               </div>
 
-              <div id="pulp-fields" class="conditional-group" style="display:none;">
-                <div class="conditional-group-title">PULP Tickets Account Details</div>
+              <!-- Pulp Tickets extra fields -->
+              <div class="platform-extra" data-platform="pulp">
                 <div class="form-row-2">
                   <div>
-                    <label for="pulpUsername">PULP Tickets Username</label>
-                    <input id="pulpUsername" name="pulpUsername" autocomplete="off" />
+                    <label for="pulp-username">Pulp Tickets Username</label>
+                    <input id="pulp-username" name="pulpUsername" />
                   </div>
                   <div>
-                    <label for="pulpPassword">PULP Tickets Password</label>
-                    <input id="pulpPassword" name="pulpPassword" type="password" autocomplete="off" />
+                    <label for="pulp-password">Pulp Tickets Password</label>
+                    <input id="pulp-password" name="pulpPassword" type="password" />
                   </div>
                 </div>
               </div>
 
               <div>
                 <label for="notes">Notes / Special Requests</label>
-                <textarea id="notes" name="notes" placeholder="Seat preferences, fan club presale codes, multiple show dates, etc."></textarea>
+                <textarea id="notes" name="notes" placeholder="Seat preferences, fan club presale codes, etc."></textarea>
               </div>
 
               <div class="small-hint">
-                After submission, we’ll review your details and email you the quote, priority status, and next steps.
+                After submission, we’ll email you a quote and next steps within 24 hours.
               </div>
 
-              <button class="btn-submit" type="submit">Submit Request</button>
+              <button class="btn-submit" type="submit">Submit Request (Demo)</button>
 
               <div id="new-order-status" class="portal-status" style="display:none;"></div>
             </form>
@@ -923,7 +907,7 @@
                 <input id="order-id" name="orderId" placeholder="e.g. SAMPLE123" required />
               </div>
               <div>
-                <label for="track-email">Email</label>
+                <label for="track-email">Email Address</label>
                 <input id="track-email" name="trackEmail" type="email" required />
               </div>
               <div class="small-hint">
@@ -946,7 +930,7 @@
             </div>
           </div>
           <div class="section-header-right">
-            You can later replace this with your exact account numbers & QR codes.
+            You can later replace this with your exact account numbers and QR codes.
           </div>
         </div>
 
@@ -954,7 +938,7 @@
           <div class="pay-card">
             <div class="pay-label">E-wallet</div>
             <div class="pay-main">GCash / Maya</div>
-            <div class="small-hint">Downpayment & full payment accepted.</div>
+            <div class="small-hint">Downpayment and full payment accepted.</div>
           </div>
 
           <div class="pay-card">
@@ -971,7 +955,7 @@
 
           <div class="pay-card">
             <div class="pay-label">Cash Options</div>
-            <div class="pay-main">Cash on Meet-up (Selected Events)</div>
+            <div class="pay-main">Cash on meet-up (selected events)</div>
             <div class="small-hint">For trusted repeat clients only.</div>
           </div>
         </div>
@@ -993,192 +977,113 @@
           <div><strong>Messenger Page:</strong> fb.me/yourticketpage</div>
           <div><strong>Instagram:</strong> @yourticketinghandle</div>
           <div class="small-hint">
-            Tip: Replace these with your real socials, then add your Messenger / WhatsApp chat buttons.
+            Tip: Replace these with your real socials, then add your Messenger or WhatsApp chat buttons.
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <div>© <span id="year"></span> Loi Ticket Assist · All rights reserved.</div>
+      <div>© <span id="year"></span> EZ Tickets · All rights reserved.</div>
       <div>Service-based ticketing assistance only. We do not represent any official ticketing platform.</div>
     </footer>
   </div>
 
   <script>
-    // Auto year in footer
-    (function () {
-      var yearEl = document.getElementById("year");
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
-    })();
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Google Apps Script endpoint
+    // Show/hide platform-specific fields
+    const platformSelect = document.getElementById("platform");
+    const platformBlocks = document.querySelectorAll(".platform-extra");
+
+    function updatePlatformFields() {
+      const value = platformSelect.value;
+      platformBlocks.forEach((block) => {
+        if (block.getAttribute("data-platform") === value) {
+          block.style.display = "block";
+        } else {
+          block.style.display = "none";
+        }
+      });
+    }
+
+    platformSelect.addEventListener("change", updatePlatformFields);
+    updatePlatformFields();
+
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec";
 
-    // Handle dynamic ticketing platform fields
-    (function () {
-      const platformSelect = document.getElementById("ticketPlatform");
-      const smFields = document.getElementById("sm-fields");
-      const ticketnetFields = document.getElementById("ticketnet-fields");
-      const pulpFields = document.getElementById("pulp-fields");
-
-      if (!platformSelect) return;
-
-      function hideAll() {
-        if (smFields) smFields.style.display = "none";
-        if (ticketnetFields) ticketnetFields.style.display = "none";
-        if (pulpFields) pulpFields.style.display = "none";
-      }
-
-      function updatePlatformFields() {
-        hideAll();
-        const value = platformSelect.value;
-        if (value === "SM_TICKETS" && smFields) {
-          smFields.style.display = "block";
-        } else if (value === "TICKETNET" && ticketnetFields) {
-          ticketnetFields.style.display = "block";
-        } else if (value === "PULP_TICKETS" && pulpFields) {
-          pulpFields.style.display = "block";
-        }
-      }
-
-      platformSelect.addEventListener("change", updatePlatformFields);
-      // Initialize state on load
-      updatePlatformFields();
-    })();
-
-    // Submit new order to Apps Script
-    (function () {
-      const form = document.getElementById("new-order-form");
-      if (!form) return;
-
+    // New order -> send to Google Apps Script
+    document.getElementById("new-order-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = this;
       const statusBox = document.getElementById("new-order-status");
+      statusBox.style.display = "block";
+      statusBox.textContent = "Submitting your request...";
 
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        if (!statusBox) return;
+      const formData = new FormData(form);
 
-        statusBox.style.display = "block";
-        statusBox.innerHTML = "⏳ Submitting your request… Please wait.";
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: new URLSearchParams(formData)
+        });
 
-        const payload = {
-          action: "create_order",
-          source: "website",
-          timestamp: new Date().toISOString(),
-          firstName: (form.firstName?.value || "").trim(),
-          lastName: (form.lastName?.value || "").trim(),
-          email: (form.email?.value || "").trim(),
-          event: (form.event?.value || "").trim(),
-          tickets: (form.tickets?.value || "").trim(),
-          section: (form.section?.value || "").trim(),
-          ticketPlatform: form.ticketPlatform?.value || "",
-          paymentMethod: form.paymentMethod?.value || "",
-          smUsername: (form.smUsername?.value || "").trim(),
-          smPassword: (form.smPassword?.value || "").trim(),
-          ticketnetAccount: (form.ticketnetAccount?.value || "").trim(),
-          ticketnetPassword: (form.ticketnetPassword?.value || "").trim(),
-          pulpUsername: (form.pulpUsername?.value || "").trim(),
-          pulpPassword: (form.pulpPassword?.value || "").trim(),
-          notes: (form.notes?.value || "").trim()
-        };
-
-        try {
-          const response = await fetch(SCRIPT_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          });
-
-          let message = "Your request was submitted successfully. Please check your email for confirmation once processed.";
-
-          // Try to read JSON response if Apps Script returns one
+        let message = "";
+        if (response.ok) {
+          let data = {};
           try {
-            const data = await response.json();
-            if (data && data.message) {
-              message = data.message;
-            }
-            if (data && data.orderId) {
-              message += "<br/><strong>Your Order ID:</strong> " + data.orderId;
-            }
+            data = await response.json();
           } catch (err) {
-            // If response is not JSON, ignore and keep default message
+            // ignore JSON parse errors for non-JSON responses
           }
 
-          statusBox.innerHTML = "✅ " + message;
+          if (data && data.success) {
+            message =
+              "✅ Request received!<br/>" +
+              "Your Order ID: <strong>" + (data.orderId || "") + "</strong><br/>" +
+              "Please check your email for the next steps.";
+          } else {
+            message =
+              "✅ Request submitted.<br/>" +
+              "We’ll email you a quote and next steps once we’ve reviewed your details.";
+          }
+
           form.reset();
-
-          // Reset conditional fields visibility after reset
-          const platformSelect = document.getElementById("ticketPlatform");
-          if (platformSelect) {
-            platformSelect.dispatchEvent(new Event("change"));
-          }
-        } catch (err) {
-          console.error("Order submission error:", err);
-          statusBox.innerHTML =
-            "⚠️ There was a problem submitting your request. " +
-            "Please try again or message us directly on Discord / Facebook.<br/><small>" +
-            (err && err.message ? err.message : "") +
-            "</small>";
+          updatePlatformFields();
+        } else {
+          message =
+            "⚠️ There was a problem submitting your request.<br/>" +
+            "Please try again in a few minutes or contact us on Discord.";
         }
-      });
-    })();
 
-    // Track existing order via Apps Script
-    (function () {
-      const form = document.getElementById("track-form");
+        statusBox.innerHTML = message;
+      } catch (error) {
+        statusBox.innerHTML =
+          "⚠️ Network error while submitting your request.<br/>" +
+          "Please check your internet connection or contact us directly.";
+      }
+    });
+
+    // Simple tracking demo
+    document.getElementById("track-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const orderId = document.getElementById("order-id").value.trim();
       const statusBox = document.getElementById("track-status");
-      if (!form || !statusBox) return;
+      statusBox.style.display = "block";
 
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        statusBox.style.display = "block";
-        statusBox.innerHTML = "⏳ Checking your order…";
-
-        const payload = {
-          action: "track_order",
-          orderId: (form.orderId?.value || "").trim(),
-          email: (form.trackEmail?.value || "").trim()
-        };
-
-        try {
-          const response = await fetch(SCRIPT_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          });
-
-          try {
-            const data = await response.json();
-            if (data && data.found) {
-              statusBox.innerHTML =
-                "🔍 <strong>Order Found</strong><br/>" +
-                "<strong>Status:</strong> " + (data.status || "Processing") + "<br/>" +
-                (data.event ? "<strong>Event:</strong> " + data.event + "<br/>" : "") +
-                (data.nextStep ? "<strong>Next Step:</strong> " + data.nextStep : "");
-            } else {
-              statusBox.innerHTML =
-                "⚠️ No matching order found for that Order ID and email.<br/>" +
-                "Please double-check your details or contact us directly so we can assist.";
-            }
-          } catch (err) {
-            // If Apps Script is not yet returning JSON, show a generic message
-            statusBox.innerHTML =
-              "ℹ️ Tracking is connected, but the response format isn't set up yet.<br/>" +
-              "For now, please DM us on Discord / Facebook with your Order ID and email.";
-          }
-        } catch (err) {
-          console.error("Track order error:", err);
-          statusBox.innerHTML =
-            "⚠️ Unable to reach the tracking server right now. Please try again later or message us directly.";
-        }
-      });
-    })();
+      if (orderId.toUpperCase() === "SAMPLE123") {
+        statusBox.innerHTML =
+          "🔍 <strong>Order Found:</strong><br/>" +
+          "<strong>Status:</strong> Confirmed – Waiting for Payment<br/>" +
+          "<strong>Event:</strong> K-pop World Tour – Manila<br/>" +
+          "<strong>Next Step:</strong> Please settle payment within 24 hours to lock your slot.";
+      } else {
+        statusBox.innerHTML =
+          "⚠️ No matching order found in this demo.<br/>" +
+          "For the real portal, this will check our database or Google Sheet for your Order ID.";
+      }
+    });
   </script>
 </body>
 </html>
