@@ -1,1090 +1,1061 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>EZ Tickets | Ticketing Assistance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy Z Tickets • Ticket Assistance Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --primary: #111827;
-      --accent: #f97316;
-      --accent-soft: #fed7aa;
-      --bg: #0b1120;
+      --bg: #020617;
+      --bg-soft: #020617;
       --card: #020617;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --radius: 12px;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-strong: rgba(56, 189, 248, 0.38);
+      --accent-stronger: rgba(56, 189, 248, 0.85);
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --border-strong: rgba(148, 163, 184, 0.7);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --text-strong: #f9fafb;
+      --danger: #f97373;
+      --success: #4ade80;
+      --warning: #fbbf24;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at top, #1f2937 0, #020617 50%, #000 100%);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem 3rem;
-    }
-
-    header {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 2px solid var(--accent-soft);
-      display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 700;
-      background: rgba(15, 23, 42, 0.9);
     }
 
-    .logo-text-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .logo-text-sub {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-
-    nav a {
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--muted);
-    }
-
-    nav a:hover {
-      border-color: var(--accent-soft);
-      color: var(--text);
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    main {
+    .site-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      padding: 32px 16px 40px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 32px;
     }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-      gap: 1.75rem;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent-soft);
-      background: rgba(15, 23, 42, 0.85);
-      font-size: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-highlight {
-      color: var(--accent);
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-bullets {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .chip {
-      font-size: 0.8rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #facc15);
-      color: #111827;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent-soft);
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-card {
-      border-radius: var(--radius);
-      background: radial-gradient(circle at top left, #111827 0, #020617 60%);
-      border: 1px solid var(--border);
-      padding: 1rem;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      font-size: 0.85rem;
+    @media (min-width: 960px) {
+      .site-wrapper {
+        padding: 40px 0 56px;
+      }
     }
 
     .pill {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent-soft);
-      color: var(--accent-soft);
-    }
-
-    .hero-card-body {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-
-    .event-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 0.6rem 0.7rem;
-      font-size: 0.8rem;
-    }
-
-    .event-title {
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .event-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      color: var(--muted);
-      font-size: 0.75rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .event-tag {
-      padding: 0.1rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border);
-    }
-
-    .event-footer {
-      display: flex;
-      justify-content: space-between;
+      display: inline-flex;
       align-items: center;
-      font-size: 0.75rem;
-      margin-top: 0.25rem;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.5), transparent 60%),
+        rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(18px);
+      color: var(--text-muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
     }
 
-    .event-price {
-      color: var(--accent-soft);
+    .pill-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #f97316, #f97316 40%, #991b1b 95%);
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 0 0 2px rgba(15, 23, 42, 0.9),
+        0 0 22px rgba(248, 250, 252, 0.58);
+    }
+
+    .pill-label {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .pill-sub {
+      opacity: 0.8;
+      font-size: 10px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-text {
+      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .logo-blob {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 15%, #facc15, #f97316 42%, #0f172a 100%);
+      position: relative;
+      box-shadow:
+        0 0 0 2px rgba(15, 23, 42, 0.95),
+        0 0 0 3px rgba(15, 23, 42, 0.95),
+        0 0 22px rgba(248, 250, 252, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-circle-inner {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 10%, #fefce8, #fbbf24 40%, #b45309 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text-title {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    h1.hero-title {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.04;
+      color: var(--text-strong);
+      letter-spacing: -0.035em;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #f97316, #facc15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 32rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
       font-weight: 500;
     }
 
-    .status-pill {
-      font-size: 0.7rem;
-      padding: 0.1rem 0.4rem;
-      border-radius: 999px;
-      border: 1px solid #22c55e;
-      color: #bbf7d0;
-      background: rgba(22, 163, 74, 0.18);
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
     }
 
-    .hero-card-right {
-      font-size: 0.8rem;
-      color: var(--muted);
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-soft);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.98));
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+    }
+
+    .button.primary {
+      background: radial-gradient(circle at top left, #38bdf8, #0ea5e9 45%, #0284c7 100%);
+      border-color: rgba(56, 189, 248, 0.9);
+      color: #0b1220;
+      font-weight: 600;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 10px 36px rgba(56, 189, 248, 0.35);
+    }
+
+    .button.primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 1),
+        0 12px 42px rgba(56, 189, 248, 0.48);
+    }
+
+    .button.secondary {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-main);
+      backdrop-filter: blur(14px);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .button.secondary:hover {
+      background: rgba(15, 23, 42, 0.98);
+      border-color: rgba(156, 163, 175, 0.9);
+    }
+
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 11px;
+      color: var(--text-soft);
+      align-items: center;
+    }
+
+    .hero-meta b {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-meta-kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .hero-meta-kpis span {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill-kpi-label {
+      color: var(--text-soft);
+    }
+
+    .pill-kpi-value {
+      color: #e5e7eb;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .right-column {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .hero-kpi {
-      padding: 0.45rem 0.6rem;
-      border-radius: var(--radius);
-      border: 1px dashed var(--border);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-kpi strong {
-      color: var(--accent-soft);
-    }
-
-    /* Sections */
-    section {
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      padding: 1.2rem 1rem 1.4rem;
-    }
-
-    section + section {
-      margin-top: 0.75rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.8rem;
-      gap: 0.75rem;
-    }
-
-    .section-title {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .section-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .section-header-right {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
+      gap: 18px;
     }
 
     .card {
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
-      padding: 0.8rem 0.85rem;
-      font-size: 0.85rem;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card h3 {
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 48%);
+      opacity: 0.85;
+      pointer-events: none;
     }
 
-    .card p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
+    .card-inner {
+      position: relative;
+      z-index: 1;
     }
 
-    .pill-row {
+    .card-header-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.35rem;
-    }
-
-    .pill-row span {
-      font-size: 0.7rem;
-      padding: 0.12rem 0.45rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    .card-footer {
-      margin-top: 0.45rem;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
-      color: var(--muted);
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
     }
 
-    .card-footer button {
-      border: none;
-      background: transparent;
-      color: var(--accent-soft);
-      font-size: 0.75rem;
-      cursor: pointer;
-      padding: 0;
+    .card-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
     }
 
-    /* Portal */
-    .portal-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
+    .card-pill-meta {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(8, 47, 73, 0.8);
+      color: #e0f2fe;
+    }
+
+    .card-title-main {
+      font-size: 17px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .pill-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #bbf7d0;
+      background: rgba(22, 101, 52, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .pill-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, #4ade80, #16a34a);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
     }
 
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      font-size: 0.8rem;
-    }
-
-    label {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 0.4rem 0.45rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      font-size: 0.82rem;
-    }
-
-    textarea {
-      min-height: 60px;
-      resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--accent-soft);
+      margin: 0;
     }
 
     .form-row-2 {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.4rem;
-    }
-
-    .small-hint {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
-    }
-
-    .btn-submit {
-      margin-top: 0.3rem;
-      align-self: flex-start;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--accent), #facc15);
-      color: #111827;
-    }
-
-    .btn-submit:hover {
-      filter: brightness(1.05);
-    }
-
-    .portal-status {
-      margin-top: 0.4rem;
-      font-size: 0.78rem;
-      padding: 0.45rem 0.5rem;
-      border-radius: 8px;
-      border: 1px dashed var(--border);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    /* Platform extras */
-    .platform-extra {
-      display: none;
-      margin-top: 0.3rem;
-    }
-
-    .platform-extra .form-row-2 {
-      margin-top: 0.2rem;
-    }
-
-    /* Payments */
-    .payments-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      font-size: 0.8rem;
-    }
-
-    .pay-card {
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.96);
-      padding: 0.55rem 0.7rem;
-      min-width: 150px;
-    }
-
-    .pay-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 0.15rem;
-    }
-
-    .pay-main {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 1.8rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    footer a {
-      color: var(--accent-soft);
-      font-size: 0.75rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 850px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        flex-wrap: wrap;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .portal-grid {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
     }
 
     @media (max-width: 640px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
+      .form-row-2 {
+        grid-template-columns: minmax(0, 1fr);
       }
+    }
 
-      .page {
-        padding-inline: 0.9rem;
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .input-group label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.85);
+      padding: 8px 11px;
+      font-size: 12px;
+      color: var(--text-main);
+      outline: none;
+      width: 100%;
+    }
+
+    .input-group textarea {
+      border-radius: 15px;
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus {
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 1),
+        0 0 0 1px rgba(56, 189, 248, 0.85);
+    }
+
+    .input-group input::placeholder,
+    .input-group textarea::placeholder {
+      color: rgba(148, 163, 184, 0.7);
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    button.primary {
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      justify-content: center;
+    }
+
+    button.primary:active {
+      transform: translateY(0);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 1),
+        0 6px 24px rgba(56, 189, 248, 0.4);
+    }
+
+    .portal-status {
+      margin-top: 8px;
+      font-size: 11px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+    }
+
+    .portal-status.success {
+      border-color: rgba(74, 222, 128, 0.8);
+      background: rgba(22, 101, 52, 0.3);
+      color: #bbf7d0;
+    }
+
+    .portal-status.error {
+      border-color: rgba(248, 113, 113, 0.9);
+      background: rgba(127, 29, 29, 0.42);
+      color: #fecaca;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .pill-mini {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .layout-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .layout-main {
+        grid-template-columns: minmax(0, 1fr);
       }
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .event-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+    }
+
+    .event-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .event-name {
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    .event-meta {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .event-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #e0f2fe;
+      background: rgba(8, 47, 73, 0.7);
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .platform-extra {
+      margin-bottom: 8px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.8);
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-mark">EZ</div>
-        <div>
-          <div class="logo-text-title">EZ Tickets</div>
-          <div class="logo-text-sub">Manila · Concerts · Events · Pre-sale Access</div>
+  <div class="site-wrapper">
+    <header class="hero-grid">
+      <div class="hero-text">
+        <div class="logo-row">
+          <div class="logo-blob">
+            <div class="logo-circle-inner">EZ</div>
+          </div>
+          <div class="logo-text-block">
+            <div class="logo-text-title">EASY Z TICKETS</div>
+            <div class="logo-text-sub">Premium Ticket Assistance • PH & International Events</div>
+          </div>
+        </div>
+
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <div>
+            <div class="pill-label">Live queue monitoring</div>
+            <div class="pill-sub">We fight the ticket wars so you don’t have to.</div>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          Secure your <span class="highlight">dream tickets</span><br />
+          without the stress, lag, or chaos.
+        </h1>
+
+        <p class="hero-subtitle">
+          Easy Z Tickets is your dedicated ticket assistant. We handle queuing, logins, and checkout
+          <strong>for SM Tickets, TicketNet, and PULP Tickets</strong> so you can focus on
+          the experience — not the ticketing war.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag">Concerts & Fanmeets</span>
+          <span class="tag">Arena & Stadium Shows</span>
+          <span class="tag">Premium & VIP Sections</span>
+          <span class="tag">Multi-account Strategy</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#portal" class="button primary">
+            Book Ticket Assistance
+          </a>
+          <a href="#events" class="button secondary">
+            View Featured Events
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-kpis">
+            <span>
+              <span class="pill-kpi-label">Fulfilled queues</span>
+              <span class="pill-kpi-value">2500+</span>
+            </span>
+            <span>
+              <span class="pill-kpi-label">Platforms</span>
+              <span class="pill-kpi-value">SM • TicketNet • PULP</span>
+            </span>
+            <span>
+              <span class="pill-kpi-label">Response time</span>
+              <span class="pill-kpi-value">&lt; 24 hrs</span>
+            </span>
+          </div>
         </div>
       </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#events">Events</a>
-        <a href="#portal">Customer Portal</a>
-        <a href="#payments">Payments</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+      <div class="right-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-header-row">
+              <div>
+                <div class="card-title">LIVE QUEUE SNAPSHOT</div>
+                <div class="card-title-main">Today’s upcoming drops</div>
+                <div class="card-subtitle">
+                  Slots are limited per event. Once a queue hits capacity, it will be closed for new
+                  requests.
+                </div>
+              </div>
+              <div class="card-pill-meta">Real-time assistance</div>
+            </div>
+
+            <div class="pill-status">
+              <div class="pill-status-dot"></div>
+              Accepting new bookings for upcoming events
+            </div>
+
+            <div class="events-list">
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Arena Concert – Day 1</div>
+                  <div class="event-meta">SM Tickets • High demand • VIP / Lower Box focus</div>
+                </div>
+                <div class="event-badge">Open for requests</div>
+              </div>
+
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Stadium Show – Premium Night</div>
+                  <div class="event-meta">TicketNet • Gold / VIP / Patron</div>
+                </div>
+                <div class="event-badge">Few slots left</div>
+              </div>
+
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Fanmeet / Showcase</div>
+                  <div class="event-meta">PULP Tickets • Fan Benefits & Early Entry</div>
+                </div>
+                <div class="event-badge">Short queue</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft);">
+              Note: These are sample events. Actual event list will be updated in our Discord and announcement channels.
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div>
-          <div class="badge">
-            <span class="badge-dot"></span>
-            <span>PH-based Ticketing Assistance · No Downpayment · Hassle-free · 99% Success Rate</span>
-          </div>
-          <h1>
-            Hassle-free
-            <span class="hero-highlight">ticket assistance</span>
-            for concerts and events you can’t miss.
-          </h1>
-          <p>
-            <span class="hero-highlight">Always missing out on good seats</span>
-            for your favorite events? We’ve got you.
-            <span class="hero-highlight">No more lines. No more queues.</span>
-			Just sit back, relax and let us do the work.
-            Tired of getting scammed by scalpers?
-            Our <span class="hero-highlight">500+ real clients and fans</span> can vouch for us.
-          </p>
-
-          <div class="hero-bullets">
-            <span class="chip">✔ Online queueing done for you</span>
-            <span class="chip">✔ Priority for high-demand events</span>
-            <span class="chip">✔ No downpayment – no ticket, no fee</span>
-            <span class="chip">✔ Multiple payment options</span>
-          </div>
-
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">
-              View Available Events →
-            </button>
-            <button class="btn-ghost" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-              Order Now
-            </button>
-          </div>
-
-          <div class="hero-note">
-            Same-day inquiries are answered within <strong>24 hours</strong> Viber or Messenger.
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-header">
-            <span>Live Snapshot (Demo)</span>
-            <span class="pill">Customer Portal Preview</span>
-          </div>
-          <div class="hero-card-body">
-            <div class="event-card">
-              <div class="event-title">K-pop World Tour – Manila</div>
-              <div class="event-meta">
-                <span>📍 Mall of Asia Arena</span>
-                <span>📅 Dec 14, 2025</span>
-              </div>
-              <div class="event-meta">
-                <span class="event-tag">VIP Standing</span>
-                <span class="event-tag">Lower Box</span>
-                <span class="event-tag">Upper Box</span>
-              </div>
-              <div class="event-footer">
-                <span class="event-price">From ₱4,500</span>
-                <span class="status-pill">Slots Available</span>
-              </div>
-            </div>
-
-            <div class="hero-card-right">
-              <div class="hero-kpi">
-                <strong>Order ID:</strong> SAMPLE123<br />
-                Status: <span style="color:#bbf7d0;">Confirmed – Waiting for Payment</span>
-              </div>
-              <div class="hero-kpi">
-                <strong>ETA:</strong> E-ticket release 3–5 days after official sale.<br />
-                You’ll receive updates via email and Messenger.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SERVICES -->
-      <section id="services">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Services Offered</div>
-            <div class="section-sub">
-              Done-for-you ticket assistance for high-demand concerts, fan meets, festivals, and more.
-            </div>
-          </div>
-          <div class="section-header-right">
-            Fully managed process — from queueing to checkout page.
-          </div>
-        </div>
-
-        <div class="cards-grid">
-          <div class="card">
-            <h3>Online Ticketing Assistance</h3>
-            <p>
-              We handle the entire online checkout flow on your behalf during ticket selling time
-              (desktop and mobile).
-            </p>
-            <div class="pill-row">
-              <span>Pre-sales</span><span>General on-sale</span><span>Multiple devices</span>
-            </div>
-            <div class="card-footer">
-              <span>Ideal for: Busy fans and resellers</span>
-              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">Book now →</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- EVENTS -->
-      <section id="events">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Available Events</div>
-            <div class="section-sub">
-              Replace these with your actual line-up. Each “Request Tickets” button can link to your order form.
-            </div>
-          </div>
-          <div class="section-header-right">
-            Tip: Group events by month and city for easier browsing.
-          </div>
-        </div>
-
-        <div class="cards-grid">
-          <div class="card">
-            <h3>K-pop World Tour – Manila</h3>
-            <p>📍 Mall of Asia Arena · 📅 Dec 14, 2025</p>
-            <div class="pill-row">
-              <span>VIP Standing</span><span>Lower Box</span><span>Upper Box</span>
-            </div>
-            <div class="card-footer">
-              <span>From ₱4,500 · Limited slots</span>
-              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Request tickets →
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Indie Music Festival – BGC</h3>
-            <p>📍 BGC Open Grounds · 📅 Jan 20, 2026</p>
-            <div class="pill-row">
-              <span>GA</span><span>VIP</span>
-            </div>
-            <div class="card-footer">
-              <span>Early bird slots available</span>
-              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Book assistance →
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Fan Meet – SM North EDSA</h3>
-            <p>📍 SM North · 📅 Feb 03, 2026</p>
-            <div class="pill-row">
-              <span>Hi-touch</span><span>Photo op</span><span>Signed merch</span>
-            </div>
-            <div class="card-footer">
-              <span>Status: On-request</span>
-              <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                Join interest list →
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CUSTOMER PORTAL -->
-      <section id="portal">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Customer Portal</div>
-            <div class="section-sub">
-              Place a new ticket request or track an existing order using your Order ID and email.
-            </div>
-          </div>
-          <div class="section-header-right">
-            Demo only – you can later connect this to Google Sheets, Forms, or your CRM.
-          </div>
-        </div>
-
-        <div class="portal-grid">
-          <!-- New Order -->
-          <div>
-            <h3 style="font-size:0.9rem;margin-bottom:0.4rem;">Place a New Ticket Request</h3>
-            <form id="new-order-form">
-              <div class="form-row-2">
-                <div>
-                  <label for="first-name">First Name</label>
-                  <input id="first-name" name="firstName" required />
-                </div>
-                <div>
-                  <label for="last-name">Last Name</label>
-                  <input id="last-name" name="lastName" required />
-                </div>
-              </div>
-
-              <div class="form-row-2">
-                <div>
-                  <label for="email">Email Address</label>
-                  <input id="email" name="email" type="email" required />
-                </div>
-                <div>
-                  <label for="event">Event</label>
-                  <input id="event" name="event" placeholder="e.g. K-pop World Tour – Manila" required />
-                </div>
-              </div>
-
-              <div class="form-row-2">
-                <div>
-                  <label for="section">Preferred Section</label>
-                  <input id="section" name="section" placeholder="e.g. VIP, Lower Box, Gen Ad" />
-                </div>
-                <div>
-                  <label for="tickets">Number of Tickets</label>
-                  <input id="tickets" name="tickets" type="number" min="1" value="1" required />
-                </div>
-              </div>
-
+    <main class="layout-main" id="portal">
+      <section>
+        <div class="card">
+          <div class="card-inner">
+            <div class="section-title-row">
               <div>
-                <label for="platform">Ticketing Platform</label>
-                <select id="platform" name="platform" required>
-                  <option value="">Select platform</option>
-                  <option value="sm">SM Tickets</option>
-                  <option value="ticketnet">Ticketnet</option>
-                  <option value="pulp">Pulp Tickets</option>
-                </select>
-                <div class="small-hint">
-                  We will use your actual ticketing account details securely during the buying window.
+                <div class="section-title">CUSTOMER PORTAL</div>
+                <div class="card-title-main">Submit a new ticket assistance request</div>
+                <div class="section-subtitle">
+                  Fill out your details once. We’ll handle the login, queueing, and checkout based
+                  on your chosen platform.
+                </div>
+              </div>
+              <span class="pill-mini">Step 1 of 2 • New request</span>
+            </div>
+
+            <!-- UPDATED FORM -->
+            <form id="new-order-form">
+              <!-- Customer details -->
+              <div class="form-row-2">
+                <div class="input-group">
+                  <label for="first-name">First name</label>
+                  <input id="first-name" name="firstName" type="text" required placeholder="Juan" />
+                </div>
+                <div class="input-group">
+                  <label for="last-name">Last name</label>
+                  <input id="last-name" name="lastName" type="text" required placeholder="Dela Cruz" />
                 </div>
               </div>
 
               <div class="form-row-2">
-                <div>
-                  <label for="payment-method">Payment Method</label>
+                <div class="input-group">
+                  <label for="email">Email address</label>
+                  <input id="email" name="email" type="email" required placeholder="you@example.com" />
+                </div>
+                <div class="input-group">
+                  <label for="event-name">Event</label>
+                  <input id="event-name" name="eventName" type="text" required placeholder="Concert / Show name" />
+                </div>
+              </div>
+
+              <!-- Ticketing platform + payment -->
+              <div class="form-row-2">
+                <div class="input-group">
+                  <label for="ticket-platform">Ticketing platform</label>
+                  <select id="ticket-platform" name="ticketPlatform" required>
+                    <option value="" disabled selected>Select platform</option>
+                    <option value="SM Tickets">SM Tickets</option>
+                    <option value="TicketNet">TicketNet</option>
+                    <option value="PULP Tickets">PULP Tickets</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="payment-method">Payment method</label>
                   <select id="payment-method" name="paymentMethod" required>
-                    <option value="">Select payment method</option>
-                    <option value="gcash">GCash</option>
-                    <option value="maya">Maya</option>
-                    <option value="card">Credit Card</option>
-                    <option value="bank">Bank Transfer</option>
+                    <option value="" disabled selected>Select payment method</option>
+                    <option value="GCash">GCash</option>
+                    <option value="Maya">Maya</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
                   </select>
                 </div>
               </div>
 
-              <!-- SM Tickets extra fields -->
-              <div class="platform-extra" data-platform="sm">
+              <!-- SM Tickets fields -->
+              <div id="sm-ticket-fields" class="platform-extra" style="display:none;">
                 <div class="form-row-2">
-                  <div>
-                    <label for="sm-username">SM Tickets Username</label>
-                    <input id="sm-username" name="smUsername" />
+                  <div class="input-group">
+                    <label for="sm-username">SM Tickets username</label>
+                    <input id="sm-username" name="smUsername" type="text" placeholder="SM Tickets username" />
                   </div>
-                  <div>
-                    <label for="sm-password">SM Tickets Password</label>
-                    <input id="sm-password" name="smPassword" type="password" />
+                  <div class="input-group">
+                    <label for="sm-password">SM Tickets password</label>
+                    <input id="sm-password" name="smPassword" type="password" placeholder="SM Tickets password" />
                   </div>
                 </div>
               </div>
 
-              <!-- Ticketnet extra fields -->
-              <div class="platform-extra" data-platform="ticketnet">
+              <!-- TicketNet fields -->
+              <div id="ticketnet-fields" class="platform-extra" style="display:none;">
                 <div class="form-row-2">
-                  <div>
-                    <label for="tn-account">Ticketnet Email / Username</label>
-                    <input id="tn-account" name="tnAccount" />
+                  <div class="input-group">
+                    <label for="ticketnet-email">TicketNet email / username</label>
+                    <input id="ticketnet-email" name="ticketnetEmail" type="email"
+                      placeholder="TicketNet login email / username" />
                   </div>
-                  <div>
-                    <label for="tn-password">Ticketnet Password</label>
-                    <input id="tn-password" name="tnPassword" type="password" />
+                  <div class="input-group">
+                    <label for="ticketnet-password">TicketNet password</label>
+                    <input id="ticketnet-password" name="ticketnetPassword" type="password"
+                      placeholder="TicketNet password" />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="input-group">
+                    <label for="ticketnet-billing">Billing address</label>
+                    <input id="ticketnet-billing" name="ticketnetBilling" type="text" placeholder="Billing address on file" />
+                  </div>
+                  <div class="input-group">
+                    <label for="ticketnet-phone">Phone number</label>
+                    <input id="ticketnet-phone" name="ticketnetPhone" type="tel" placeholder="09xx xxx xxxx" />
                   </div>
                 </div>
               </div>
 
-              <!-- Pulp Tickets extra fields -->
-              <div class="platform-extra" data-platform="pulp">
+              <!-- PULP Tickets fields -->
+              <div id="pulp-fields" class="platform-extra" style="display:none;">
                 <div class="form-row-2">
-                  <div>
-                    <label for="pulp-username">Pulp Tickets Username</label>
-                    <input id="pulp-username" name="pulpUsername" />
+                  <div class="input-group">
+                    <label for="pulp-username">PULP Tickets username</label>
+                    <input id="pulp-username" name="pulpUsername" type="text" placeholder="PULP Tickets username" />
                   </div>
-                  <div>
-                    <label for="pulp-password">Pulp Tickets Password</label>
-                    <input id="pulp-password" name="pulpPassword" type="password" />
+                  <div class="input-group">
+                    <label for="pulp-password">PULP Tickets password</label>
+                    <input id="pulp-password" name="pulpPassword" type="password" placeholder="PULP Tickets password" />
                   </div>
                 </div>
               </div>
 
-              <div>
-                <label for="notes">Notes / Special Requests</label>
-                <textarea id="notes" name="notes" placeholder="Seat preferences, fan club presale codes, etc."></textarea>
+              <!-- Notes -->
+              <div class="input-group">
+                <label for="notes">Extra notes (optional)</label>
+                <textarea id="notes" name="notes" rows="3"
+                  placeholder="Section, preferred seats, time window, etc."></textarea>
               </div>
 
-              <div class="small-hint">
-                After submission, we’ll email you a quote and next steps within 24 hours.
-              </div>
-
-              <button class="btn-submit" type="submit">Submit Request (Demo)</button>
+              <button type="submit" class="button primary w-full">
+                Submit ticket assistance request
+              </button>
 
               <div id="new-order-status" class="portal-status" style="display:none;"></div>
             </form>
           </div>
-
-          <!-- Track Order -->
-          <div>
-            <h3 style="font-size:0.9rem;margin-bottom:0.4rem;">Track Existing Order</h3>
-            <form id="track-form">
-              <div>
-                <label for="order-id">Order ID</label>
-                <input id="order-id" name="orderId" placeholder="e.g. SAMPLE123" required />
-              </div>
-              <div>
-                <label for="track-email">Email Address</label>
-                <input id="track-email" name="trackEmail" type="email" required />
-              </div>
-              <div class="small-hint">
-                Demo tip: Try Order ID <strong>SAMPLE123</strong> to see a sample status.
-              </div>
-              <button class="btn-submit" type="submit">Check Status</button>
-              <div id="track-status" class="portal-status" style="display:none;"></div>
-            </form>
-          </div>
         </div>
       </section>
 
-      <!-- PAYMENTS -->
-      <section id="payments">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Modes of Payment</div>
-            <div class="section-sub">
-              PH-friendly options. Exact account details will be sent after we confirm your request.
+      <section id="events">
+        <div class="card">
+          <div class="card-inner">
+            <div class="section-title-row">
+              <div>
+                <div class="section-title">FEATURED EVENTS</div>
+                <div class="card-title-main">Sample lineup & demand indicator</div>
+                <div class="section-subtitle">
+                  This will be your highlight reel. For now, this is static. Later we can plug in feeds or manual updates.
+                </div>
+              </div>
+              <span class="pill-mini">Step 2 • Pick your event</span>
             </div>
-          </div>
-          <div class="section-header-right">
-            You can later replace this with your exact account numbers and QR codes.
-          </div>
-        </div>
 
-        <div class="payments-row">
-          <div class="pay-card">
-            <div class="pay-label">E-wallet</div>
-            <div class="pay-main">GCash / Maya</div>
-            <div class="small-hint">Downpayment and full payment accepted.</div>
-          </div>
+            <div class="events-list">
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Arena K-POP Night</div>
+                  <div class="event-meta">SM Tickets • Manila • VIP, Lower Box, Patron</div>
+                </div>
+                <div class="event-badge">High demand</div>
+              </div>
 
-          <div class="pay-card">
-            <div class="pay-label">Bank Transfer</div>
-            <div class="pay-main">BPI / BDO / Other PH Banks</div>
-            <div class="small-hint">Details sent via email upon confirmation.</div>
-          </div>
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Stadium Rock Festival</div>
+                  <div class="event-meta">TicketNet • Quezon City • Gold, VIP Floor</div>
+                </div>
+                <div class="event-badge">Medium demand</div>
+              </div>
 
-          <div class="pay-card">
-            <div class="pay-label">Card / Online</div>
-            <div class="pay-main">Credit / Debit via partner gateways</div>
-            <div class="small-hint">Subject to convenience fees.</div>
-          </div>
-
-          <div class="pay-card">
-            <div class="pay-label">Cash Options</div>
-            <div class="pay-main">Cash on meet-up (selected events)</div>
-            <div class="small-hint">For trusted repeat clients only.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Contact & Inquiries</div>
-            <div class="section-sub">
-              Send us a message with the event, date, and preferred section — we’ll take it from there.
+              <div class="event-item">
+                <div class="event-main">
+                  <div class="event-name">Fanmeet Showcase</div>
+                  <div class="event-meta">PULP Tickets • Manila • Fan Benefits</div>
+                </div>
+                <div class="event-badge">Low queue</div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div style="font-size:0.85rem;color:var(--muted);display:flex;flex-direction:column;gap:0.35rem;">
-          <div><strong>Email:</strong> your-email@example.com</div>
-          <div><strong>Messenger Page:</strong> fb.me/yourticketpage</div>
-          <div><strong>Instagram:</strong> @yourticketinghandle</div>
-          <div class="small-hint">
-            Tip: Replace these with your real socials, then add your Messenger or WhatsApp chat buttons.
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft);">
+              For the full real-time list, join our Discord channel. All live drops and queue statuses are posted there first.
+            </div>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <div>© <span id="year"></span> EZ Tickets · All rights reserved.</div>
-      <div>Service-based ticketing assistance only. We do not represent any official ticketing platform.</div>
+      <div>© <span id="year"></span> Easy Z Tickets. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Join our Discord</a>
+        <a href="#">How Ticket Assistance Works</a>
+        <a href="#portal">Customer Portal</a>
+      </div>
     </footer>
   </div>
 
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", function () {
+      // Footer year
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Show/hide platform-specific fields
-    const platformSelect = document.getElementById("platform");
-    const platformBlocks = document.querySelectorAll(".platform-extra");
+      const form = document.getElementById("new-order-form");
+      const statusEl = document.getElementById("new-order-status");
 
-    function updatePlatformFields() {
-      const value = platformSelect.value;
-      platformBlocks.forEach((block) => {
-        if (block.getAttribute("data-platform") === value) {
-          block.style.display = "block";
-        } else {
-          block.style.display = "none";
-        }
-      });
-    }
+      const platformSelect = document.getElementById("ticket-platform");
+      const smFields = document.getElementById("sm-ticket-fields");
+      const ticketnetFields = document.getElementById("ticketnet-fields");
+      const pulpFields = document.getElementById("pulp-fields");
 
-    platformSelect.addEventListener("change", updatePlatformFields);
-    updatePlatformFields();
-
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec";
-
-    // New order -> send to Google Apps Script
-    document.getElementById("new-order-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const form = this;
-      const statusBox = document.getElementById("new-order-status");
-      statusBox.style.display = "block";
-      statusBox.textContent = "Submitting your request...";
-
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch(SCRIPT_URL, {
-          method: "POST",
-          body: new URLSearchParams(formData)
-        });
-
-        let message = "";
-        if (response.ok) {
-          let data = {};
-          try {
-            data = await response.json();
-          } catch (err) {
-            // ignore JSON parse errors for non-JSON responses
-          }
-
-          if (data && data.success) {
-            message =
-              "✅ Request received!<br/>" +
-              "Your Order ID: <strong>" + (data.orderId || "") + "</strong><br/>" +
-              "Please check your email for the next steps.";
+      function setRequiredForSection(sectionEl, required) {
+        if (!sectionEl) return;
+        const inputs = sectionEl.querySelectorAll("input, select, textarea");
+        inputs.forEach(el => {
+          if (required) {
+            el.setAttribute("required", "required");
           } else {
-            message =
-              "✅ Request submitted.<br/>" +
-              "We’ll email you a quote and next steps once we’ve reviewed your details.";
+            el.removeAttribute("required");
+          }
+        });
+      }
+
+      function updatePlatformFields() {
+        smFields.style.display = "none";
+        ticketnetFields.style.display = "none";
+        pulpFields.style.display = "none";
+
+        setRequiredForSection(smFields, false);
+        setRequiredForSection(ticketnetFields, false);
+        setRequiredForSection(pulpFields, false);
+
+        const value = platformSelect.value;
+
+        if (value === "SM Tickets") {
+          smFields.style.display = "block";
+          setRequiredForSection(smFields, true);
+        } else if (value === "TicketNet") {
+          ticketnetFields.style.display = "block";
+          setRequiredForSection(ticketnetFields, true);
+        } else if (value === "PULP Tickets") {
+          pulpFields.style.display = "block";
+          setRequiredForSection(pulpFields, true);
+        }
+      }
+
+      if (platformSelect) {
+        platformSelect.addEventListener("change", updatePlatformFields);
+        updatePlatformFields();
+      }
+
+      function showStatus(type, message) {
+        if (!statusEl) return;
+        statusEl.style.display = "block";
+        statusEl.textContent = message;
+        statusEl.className = "portal-status" + (type ? " " + type : "");
+      }
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          showStatus("", "Submitting your request...");
+
+          const payload = {
+            firstName: document.getElementById("first-name").value.trim(),
+            lastName: document.getElementById("last-name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            eventName: document.getElementById("event-name").value.trim(),
+            ticketPlatform: platformSelect.value,
+            paymentMethod: document.getElementById("payment-method").value,
+            notes: document.getElementById("notes").value.trim()
+          };
+
+          if (platformSelect.value === "SM Tickets") {
+            payload.smUsername = document.getElementById("sm-username").value.trim();
+            payload.smPassword = document.getElementById("sm-password").value.trim();
+          } else if (platformSelect.value === "TicketNet") {
+            payload.ticketnetEmail = document.getElementById("ticketnet-email").value.trim();
+            payload.ticketnetPassword = document.getElementById("ticketnet-password").value.trim();
+            payload.ticketnetBilling = document.getElementById("ticketnet-billing").value.trim();
+            payload.ticketnetPhone = document.getElementById("ticketnet-phone").value.trim();
+          } else if (platformSelect.value === "PULP Tickets") {
+            payload.pulpUsername = document.getElementById("pulp-username").value.trim();
+            payload.pulpPassword = document.getElementById("pulp-password").value.trim();
           }
 
-          form.reset();
-          updatePlatformFields();
-        } else {
-          message =
-            "⚠️ There was a problem submitting your request.<br/>" +
-            "Please try again in a few minutes or contact us on Discord.";
-        }
-
-        statusBox.innerHTML = message;
-      } catch (error) {
-        statusBox.innerHTML =
-          "⚠️ Network error while submitting your request.<br/>" +
-          "Please check your internet connection or contact us directly.";
-      }
-    });
-
-    // Simple tracking demo
-    document.getElementById("track-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const orderId = document.getElementById("order-id").value.trim();
-      const statusBox = document.getElementById("track-status");
-      statusBox.style.display = "block";
-
-      if (orderId.toUpperCase() === "SAMPLE123") {
-        statusBox.innerHTML =
-          "🔍 <strong>Order Found:</strong><br/>" +
-          "<strong>Status:</strong> Confirmed – Waiting for Payment<br/>" +
-          "<strong>Event:</strong> K-pop World Tour – Manila<br/>" +
-          "<strong>Next Step:</strong> Please settle payment within 24 hours to lock your slot.";
-      } else {
-        statusBox.innerHTML =
-          "⚠️ No matching order found in this demo.<br/>" +
-          "For the real portal, this will check our database or Google Sheet for your Order ID.";
+          fetch("https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          })
+            .then(function () {
+              showStatus("success", "Request submitted! Please watch your email / Discord for updates.");
+              form.reset();
+              updatePlatformFields();
+            })
+            .catch(function (err) {
+              console.error(err);
+              showStatus("error", "Something went wrong while submitting. Please try again or message us on Discord.");
+            });
+        });
       }
     });
   </script>
 </body>
 </html>
-
