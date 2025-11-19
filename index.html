@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,37 +16,39 @@
       --muted: #9ca3af;
       --border: #1f2937;
       --radius: 12px;
-      --radius-lg: 20px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
-      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.55);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Inter", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      background: radial-gradient(circle at top, #1f2937 0, #020617 50%, #000 100%);
       color: var(--text);
-      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 1.75rem 1.25rem 3rem;
+      padding: 1.5rem 1.25rem 3rem;
     }
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 2.25rem;
-      gap: 1.25rem;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
 
     .logo {
@@ -58,38 +61,24 @@
       width: 40px;
       height: 40px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 0%, #fed7aa, #f97316 40%, #1f2937 100%);
+      border: 2px solid var(--accent-soft);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.65),
-        0 12px 30px rgba(15, 23, 42, 0.9);
-      position: relative;
-      overflow: hidden;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    .logo-mark::before {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: inherit;
-      border: 1px solid rgba(15, 23, 42, 0.65);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.4);
-    }
-
-    .logo-icon {
-      font-size: 1.3rem;
-      transform: translateY(1px);
-    }
-
-    .logo-text-main {
-      font-weight: 650;
-      letter-spacing: 0.04em;
+    .logo-text-title {
+      font-weight: 700;
       font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .logo-text-sub {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
@@ -129,113 +118,71 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      padding: 0.32rem 0.75rem 0.32rem 0.4rem;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(249, 115, 22, 0.6);
-      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.3), transparent 60%),
-        rgba(15, 23, 42, 0.96);
-      color: var(--accent-soft);
-      font-size: 0.7rem;
-      margin-bottom: 0.9rem;
+      border: 1px solid var(--accent-soft);
+      background: rgba(15, 23, 42, 0.85);
+      font-size: 0.75rem;
+      margin-bottom: 0.75rem;
     }
 
     .badge-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0%, #facc15, #f97316);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8),
-        0 0 18px rgba(249, 115, 22, 0.8);
-    }
-
-    .badge-dot::after {
-      content: "";
       width: 8px;
       height: 8px;
-      border-radius: inherit;
-      background: #0b1120;
+      border-radius: 999px;
+      background: #22c55e;
     }
 
-    .hero-title {
-      font-size: clamp(2.15rem, 2.7vw + 1.3rem, 2.7rem);
-      line-height: 1.1;
-      font-weight: 800;
-      margin-bottom: 0.8rem;
+    .hero h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin-bottom: 0.6rem;
     }
 
-    .hero-title span {
-      color: var(--accent-soft);
-      text-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+    .hero-highlight {
+      color: var(--accent);
     }
 
-    .hero-subtitle {
+    .hero p {
+      color: var(--muted);
       font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 32rem;
-      margin-bottom: 1.35rem;
-    }
-
-    .hero-subtitle strong {
-      color: #fef3c7;
-      font-weight: 600;
-    }
-
-    .hero-list {
-      display: grid;
-      grid-template-columns: 1.1fr 1.3fr;
-      gap: 0.85rem;
-      margin-bottom: 1.4rem;
-      font-size: 0.85rem;
-    }
-
-    .hero-list-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .hero-list-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.45rem;
-      color: var(--muted);
-    }
-
-    .hero-list-dot {
-      font-size: 0.8rem;
-      line-height: 1.6;
-      color: var(--accent-soft);
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      align-items: center;
       margin-bottom: 1rem;
     }
 
-    .btn {
+    .hero-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
       padding: 0.55rem 1.1rem;
-      border: 1px solid rgba(249, 115, 22, 0.8);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text);
-      font-size: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      text-decoration: none;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
-    }
-
-    .btn span {
-      font-size: 1rem;
+      gap: 0.4rem;
     }
 
     .btn-primary {
@@ -255,128 +202,94 @@
 
     .btn-ghost:hover {
       border-color: var(--accent-soft);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.85);
     }
 
     .hero-note {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .hero-note::before {
-      content: "◎";
-      font-size: 0.6rem;
-      color: var(--accent-soft);
     }
 
     .hero-card {
-      border-radius: 1.25rem;
-      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.21), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.22), transparent 55%),
-        rgba(15, 23, 42, 0.96);
-      padding: 1.15rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0 0, rgba(250, 250, 249, 0.08), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
     }
 
     .hero-card-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       margin-bottom: 0.75rem;
-      font-size: 0.8rem;
-      color: var(--muted);
+      font-size: 0.85rem;
     }
 
     .pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      padding: 0.12rem 0.55rem;
       font-size: 0.7rem;
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      color: var(--accent-soft);
     }
 
     .hero-card-body {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 0.85rem;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0.75rem;
       align-items: flex-start;
     }
 
     .event-card {
+      background: rgba(15, 23, 42, 0.9);
       border-radius: var(--radius);
-      padding: 0.75rem 0.8rem;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: var(--shadow-subtle);
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.7rem;
       font-size: 0.8rem;
     }
 
     .event-title {
       font-weight: 600;
-      margin-bottom: 0.25rem;
-      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
     }
 
     .event-meta {
       display: flex;
-      justify-content: space-between;
-      font-size: 0.76rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
       color: var(--muted);
+      font-size: 0.75rem;
       margin-bottom: 0.35rem;
     }
 
-    .event-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-bottom: 0.5rem;
-    }
-
     .event-tag {
-      font-size: 0.72rem;
-      padding: 0.1rem 0.45rem;
+      padding: 0.1rem 0.5rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
     }
 
-    .event-status-row {
+    .event-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.75rem;
-      color: var(--muted);
       margin-top: 0.25rem;
     }
 
+    .event-price {
+      color: var(--accent-soft);
+      font-weight: 500;
+    }
+
     .status-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(22, 163, 74, 0.9);
-      padding: 0.08rem 0.45rem;
       font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid #22c55e;
       color: #bbf7d0;
-      background: rgba(5, 46, 22, 0.85);
+      background: rgba(22, 163, 74, 0.18);
     }
 
     .hero-card-right {
@@ -395,320 +308,249 @@
     }
 
     .hero-kpi strong {
-      color: #fef3c7;
-      font-weight: 600;
-    }
-
-    .hero-kpi span {
-      font-size: 0.72rem;
-    }
-
-    .hero-kpi-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      color: var(--accent-soft);
     }
 
     /* Sections */
     section {
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, rgba(31, 41, 55, 0.8), transparent 60%),
-        rgba(15, 23, 42, 0.96);
-      padding: 1.25rem 1.1rem 1.4rem;
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      box-shadow: var(--shadow-soft);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.2rem 1rem 1.4rem;
+    }
+
+    section + section {
+      margin-top: 0.75rem;
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      align-items: flex-end;
-      margin-bottom: 1rem;
+      align-items: baseline;
+      margin-bottom: 0.8rem;
+      gap: 0.75rem;
     }
 
     .section-title {
-      font-size: 1.05rem;
-      font-weight: 650;
-      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      font-weight: 600;
     }
 
     .section-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      max-width: 28rem;
     }
 
     .section-header-right {
       font-size: 0.75rem;
       color: var(--muted);
-      text-align: right;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.8rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
     }
 
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
 
     .pill-row span {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 0.1rem 0.55rem;
       font-size: 0.7rem;
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    /* Cards grid (services / events) */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-      font-size: 0.82rem;
-    }
-
-    .card {
-      border-radius: var(--radius);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 0.8rem 0.8rem 0.75rem;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .card h3 {
-      font-size: 0.88rem;
-      margin-bottom: 0.1rem;
-    }
-
-    .card p {
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.78rem;
     }
 
     .card-footer {
-      margin-top: 0.35rem;
+      margin-top: 0.45rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.75rem;
       color: var(--muted);
-      gap: 0.35rem;
     }
 
     .card-footer button {
+      border: none;
+      background: transparent;
+      color: var(--accent-soft);
       font-size: 0.75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-      padding: 0.2rem 0.55rem;
       cursor: pointer;
+      padding: 0;
     }
 
     /* Portal */
     .portal-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .portal-panel {
-      border-radius: var(--radius);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 0.9rem 0.85rem;
-      box-shadow: var(--shadow-subtle);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.45rem;
       font-size: 0.8rem;
     }
 
     label {
-      display: block;
-      margin-bottom: 0.18rem;
       font-size: 0.78rem;
-      color: #e5e7eb;
+      color: var(--muted);
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.96);
+      padding: 0.4rem 0.45rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #020617;
       color: var(--text);
-      padding: 0.4rem 0.5rem;
-      font-size: 0.8rem;
-      outline: none;
+      font-size: 0.82rem;
+    }
+
+    textarea {
+      min-height: 60px;
+      resize: vertical;
     }
 
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: rgba(249, 115, 22, 0.8);
-      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.5);
-    }
-
-    textarea {
-      min-height: 70px;
-      resize: vertical;
+      outline: none;
+      border-color: var(--accent-soft);
     }
 
     .form-row-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
-    .small-hint {
+    
+    .conditional-group {
+      margin-top: 0.5rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .conditional-group-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-soft);
+      margin-bottom: 0.25rem;
+    }
+
+.small-hint {
       font-size: 0.72rem;
       color: var(--muted);
-    }
-
-    .portal-status {
-      margin-top: 0.5rem;
-      font-size: 0.78rem;
-      border-radius: 0.6rem;
-      padding: 0.5rem 0.6rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.96);
+      margin-top: 0.1rem;
     }
 
     .btn-submit {
+      margin-top: 0.3rem;
+      align-self: flex-start;
+      padding: 0.45rem 0.9rem;
       border-radius: 999px;
-      border: 1px solid rgba(249, 115, 22, 0.85);
-      padding: 0.5rem 0.9rem;
-      background: linear-gradient(135deg, #f97316, #facc15);
-      color: #111827;
+      border: none;
       font-size: 0.8rem;
+      font-weight: 500;
       cursor: pointer;
-      font-weight: 600;
-      margin-top: 0.2rem;
+      background: linear-gradient(135deg, var(--accent), #facc15);
+      color: #111827;
     }
 
     .btn-submit:hover {
-      filter: brightness(1.03);
+      filter: brightness(1.05);
+    }
+
+    .portal-status {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      padding: 0.45rem 0.5rem;
+      border-radius: 8px;
+      border: 1px dashed var(--border);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     /* Payments */
-    .pay-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.8rem;
-      font-size: 0.78rem;
-    }
-
-    .pay-card {
-      border-radius: var(--radius);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 0.7rem 0.7rem 0.6rem;
+    .payments-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .pay-label {
-      font-size: 0.74rem;
-      color: var(--muted);
-    }
-
-    .pay-main {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Contact */
-    .contact-cols {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 0.85rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
       font-size: 0.8rem;
     }
 
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      color: var(--muted);
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
-    .contact-bullet {
-      font-size: 0.9rem;
-      color: var(--accent-soft);
-      margin-top: 0.05rem;
-    }
-
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.4rem;
-    }
-
-    .social-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      padding: 0.14rem 0.7rem;
-      font-size: 0.75rem;
-      color: #e5e7eb;
+    .pay-card {
+      border-radius: 10px;
+      border: 1px solid var(--border);
       background: rgba(15, 23, 42, 0.96);
+      padding: 0.55rem 0.7rem;
+      min-width: 150px;
     }
 
+    .pay-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .pay-main {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
     footer {
-      margin-top: 1.4rem;
+      margin-top: 1.8rem;
       font-size: 0.75rem;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
-      gap: 0.6rem;
       flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    @media (max-width: 900px) {
+    footer a {
+      color: var(--accent-soft);
+      font-size: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
       .hero {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        order: -1;
-      }
-
-      .cards-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .portal-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .pay-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .contact-cols {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
       header {
         flex-direction: column;
         align-items: flex-start;
@@ -716,41 +558,38 @@
 
       nav {
         flex-wrap: wrap;
-        justify-content: flex-start;
       }
 
       .cards-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .pay-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-list {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      section {
-        padding: 1rem 0.85rem 1.1rem;
+      .page {
+        padding-inline: 0.9rem;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
     <header>
       <div class="logo">
-        <div class="logo-mark">
-          <span class="logo-icon">🎫</span>
-        </div>
+        <div class="logo-mark">LT</div>
         <div>
-          <div class="logo-text-main">EZ Tickets MNL</div>
-          <div class="logo-text-sub">Premium Ticketing Assistance · PH-Based</div>
+          <div class="logo-text-title">EZ Tickets MNL</div>
+          <div class="logo-text-sub">Concerts · Events · Pre-sale Access</div>
         </div>
       </div>
-
       <nav>
         <a href="#services">Services</a>
         <a href="#events">Events</a>
@@ -768,46 +607,32 @@
             <span class="badge-dot"></span>
             <span>PH-based Ticketing Assistance · No Downpayment · Legit - Hassle-free · 99% Success Rate</span>
           </div>
-          <h1 class="hero-title">
-            Stress-free ticketing assistance<br />
-            for <span>SM Tickets, Ticketnet, PULP Tickets</span>.
+          <h1>
+            Hassle-free
+            <span class="hero-highlight">ticket assistance</span>
+            for concerts & events you can’t miss.
           </h1>
-          <p class="hero-subtitle">
-            We help you secure tickets for <strong>concerts, fanmeets, and live events</strong> in the Philippines —
-            no need to panic during onsale. You focus on the hype, we handle the queue.
+          <p>
+            <span class="hero-highlight">ALWAYS MISSING OUT ON GOOD SEATS</span> 
+			for your preferred events? We Got you. 
+			<span class="hero-highlight">NO MORE LINES. NO MORE QUEUES.</span> 
+			<span class="hero-highlight">Keep getting scammed by scalpers?</span> 
+			Worry no more. We have more than 500+ references - real people, real fans.
           </p>
 
-          <div class="hero-list">
-            <div class="hero-list-col">
-              <div class="hero-list-item">
-                <span class="hero-list-dot">•</span>
-                <span>Ideal for busy fans who can’t monitor multiple onsale times.</span>
-              </div>
-              <div class="hero-list-item">
-                <span class="hero-list-dot">•</span>
-                <span>Support for PH platforms: SM Tickets, Ticketnet, PULP Tickets.</span>
-              </div>
-            </div>
-            <div class="hero-list-col">
-              <div class="hero-list-item">
-                <span class="hero-list-dot">•</span>
-                <span>Transparent coordination, screenshots, and proof of attempts.</span>
-              </div>
-              <div class="hero-list-item">
-                <span class="hero-list-dot">•</span>
-                <span>Handled by a dedicated assistant; no bots, no shady tools.</span>
-              </div>
-            </div>
+          <div class="hero-bullets">
+            <span class="chip">✔ Online Queueing</span>
+            <span class="chip">✔ Priority on High-demand Events</span>
+            <span class="chip">✔ NO DOWNPAYMENT - No tickets = No FEES</span>
+            <span class="chip">✔ Multiple Payment Options</span>
           </div>
 
-          <div class="hero-cta-row">
-            <button class="btn btn-primary"
-              onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-              Book / Track My Order <span>→</span>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">
+              View Available Events →
             </button>
-            <button class="btn btn-ghost"
-              onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">
-              View Featured Events
+            <button class="btn-ghost" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
+              Book / Track My Order
             </button>
           </div>
 
@@ -817,44 +642,36 @@
         </div>
 
         <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-card-header">
-              <span>Live Snapshot (Demo)</span>
-              <span class="pill">Customer Portal Preview</span>
-            </div>
-            <div class="hero-card-body">
-              <div class="event-card">
-                <div class="event-title">K-pop World Tour – Manila</div>
-                <div class="event-meta">
-                  <span>📍 Mall of Asia Arena</span>
-                  <span>📅 Dec 14, 2025</span>
-                </div>
-                <div class="event-meta">
-                  <span class="event-tag">VIP Standing</span>
-                  <span class="event-tag">Lower Box</span>
-                  <span class="event-tag">Upper Box</span>
-                </div>
-                <div class="event-status-row">
-                  <span>Assistance slots left: <strong>4</strong></span>
-                  <span class="status-pill">Open for requests</span>
-                </div>
+          <div class="hero-card-header">
+            <span>Live Snapshot (Demo)</span>
+            <span class="pill">Customer Portal Preview</span>
+          </div>
+          <div class="hero-card-body">
+            <div class="event-card">
+              <div class="event-title">K-pop World Tour – Manila</div>
+              <div class="event-meta">
+                <span>📍 Mall of Asia Arena</span>
+                <span>📅 Dec 14, 2025</span>
               </div>
+              <div class="event-meta">
+                <span class="event-tag">VIP Standing</span>
+                <span class="event-tag">Lower Box</span>
+                <span class="event-tag">Upper Box</span>
+              </div>
+              <div class="event-footer">
+                <span class="event-price">From ₱4,500</span>
+                <span class="status-pill">Slots Available</span>
+              </div>
+            </div>
 
-              <div class="hero-card-right">
-                <div class="hero-kpi-row">
-                  <div class="hero-kpi">
-                    <strong>99%</strong>
-                    <span>Successful coordination rate for confirmed requests.</span>
-                  </div>
-                  <div class="hero-kpi">
-                    <strong>0%</strong>
-                    <span>Downpayment required to submit an assistance request.</span>
-                  </div>
-                </div>
-                <div class="hero-kpi">
-                  <strong>All-in-one portal:</strong><br />
-                  Submit requests, track status, and manage payment details on a single page.
-                </div>
+            <div class="hero-card-right">
+              <div class="hero-kpi">
+                <strong>Order ID:</strong> SAMPLE123<br />
+                Status: <span style="color:#bbf7d0;">Confirmed – Waiting for Payment</span>
+              </div>
+              <div class="hero-kpi">
+                <strong>ETA:</strong> E-ticket release 3–5 days after official sale.<br />
+                You’ll receive updates via email + Messenger.
               </div>
             </div>
           </div>
@@ -865,69 +682,43 @@
       <section id="services">
         <div class="section-header">
           <div>
-            <div class="section-title">What We Do</div>
+            <div class="section-title">Services Offered</div>
             <div class="section-sub">
-              Full-service ticketing assistance for PH-based onsales, ideal for concerts, fan meets, festivals, and
-              special events.
+              Done-for-you ticket assistance for high-demand concerts, fanmeets, festivals, and more.
             </div>
           </div>
           <div class="section-header-right">
-            Best for fans who can’t be online during onsale but still want a fair shot at good seats.
+            Fully managed process — from queueing up to final ticket confirmation.
           </div>
         </div>
 
         <div class="cards-grid">
           <div class="card">
-            <h3>Standard Ticket Assistance</h3>
+            <h3>Online Ticketing Assistance</h3>
             <p>
-              We queue and purchase tickets on your behalf during the official onsale time on SM Tickets, Ticketnet,
-              or PULP Tickets.
+              We handle the entire online checkout flow on your behalf during ticket selling time
+              (desktop + mobile).
             </p>
             <div class="pill-row">
-              <span>Concerts</span><span>Fanmeets</span><span>Festivals</span>
+              <span>Presales</span><span>General On-sale</span><span>Multiple devices</span>
             </div>
             <div class="card-footer">
-              <span>Best for: General onsale & presale</span>
-              <button type="button"
-                onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Book now →
-              </button>
+              <span>Ideal for: Busy fans & resellers</span>
+              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">Book now →</button>
             </div>
           </div>
 
           <div class="card">
-            <h3>Group / Barkada Requests</h3>
+            <h3>VIP / Fan Club Coordination</h3>
             <p>
-              Coordinate multiple seats in one go for you and your friends. We’ll try to keep your group together as
-              much as possible.
+              Assistance with fan club pre-sales, membership codes
             </p>
             <div class="pill-row">
-              <span>Same section targeting</span><span>Multi-ticket handling</span>
+              <span>Fan club</span><span>Pre-sale</span>
             </div>
             <div class="card-footer">
-              <span>Best for: 3+ tickets</span>
-              <button type="button"
-                onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Start a group request →
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Premium / Hard-to-Get Slots</h3>
-            <p>
-              For high-demand VIP sections, soundcheck, or hi-touch events, we plan multiple attempts to increase your
-              chances.
-            </p>
-            <div class="pill-row">
-              <span>VIP / VVIP</span><span>Hi-touch</span><span>Fan benefits</span>
-            </div>
-            <div class="card-footer">
-              <span>Best for: High-stakes events</span>
-              <button type="button"
-                onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Submit a priority request →
-              </button>
+              <span>Custom arrangements per group</span>
+              <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Talk to us →</button>
             </div>
           </div>
         </div>
@@ -937,10 +728,9 @@
       <section id="events">
         <div class="section-header">
           <div>
-            <div class="section-title">Featured Events (Demo)</div>
+            <div class="section-title">Available Events</div>
             <div class="section-sub">
-              Sample lineup of events you can use to showcase what’s currently open for assistance. Later, we can
-              connect this to a live source or a Google Sheet.
+              Replace these with your actual line-up. Each “Request Tickets” button can link to your order form.
             </div>
           </div>
           <div class="section-header-right">
@@ -957,8 +747,7 @@
             </div>
             <div class="card-footer">
               <span>From ₱4,500 · Limited Slots</span>
-              <button type="button"
-                onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
+              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
                 Request tickets →
               </button>
             </div>
@@ -972,23 +761,21 @@
             </div>
             <div class="card-footer">
               <span>Early bird slots available</span>
-              <button type="button"
-                onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
-                Secure assistance →
+              <button type="button" onclick="document.getElementById('portal').scrollIntoView({behavior:'smooth'})">
+                Book assistance →
               </button>
             </div>
           </div>
 
           <div class="card">
-            <h3>Fanmeet Night – Manila</h3>
-            <p>📍 New Frontier Theater · 📅 Feb 02, 2026</p>
+            <h3>Fanmeet – SM North EDSA</h3>
+            <p>📍 SM North · 📅 Feb 03, 2026</p>
             <div class="pill-row">
               <span>Hi-touch</span><span>Photo op</span><span>Signed merch</span>
             </div>
             <div class="card-footer">
               <span>Status: On-request</span>
-              <button type="button"
-                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              <button type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                 Join interest list →
               </button>
             </div>
@@ -1002,11 +789,11 @@
           <div>
             <div class="section-title">Customer Portal</div>
             <div class="section-sub">
-              Place a new ticket request, choose your ticketing platform, and select your payment method in one place.
+              Place a new ticket request or track an existing order using your Order ID and email.
             </div>
           </div>
           <div class="section-header-right">
-            Connected to Google Sheets via Google Apps Script for easy tracking.
+            Demo only – you can later connect this to Google Sheets / Forms / your CRM.
           </div>
         </div>
 
@@ -1017,89 +804,112 @@
             <form id="new-order-form">
               <div class="form-row-2">
                 <div>
-                  <label for="first-name">First Name</label>
-                  <input id="first-name" name="firstName" type="text" required />
+                  <label for="firstName">First Name</label>
+                  <input id="firstName" name="firstName" required />
                 </div>
                 <div>
-                  <label for="last-name">Last Name</label>
-                  <input id="last-name" name="lastName" type="text" required />
+                  <label for="lastName">Last Name</label>
+                  <input id="lastName" name="lastName" required />
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div>
-                  <label for="email">Email Address</label>
+                  <label for="email">Email</label>
                   <input id="email" name="email" type="email" required />
                 </div>
                 <div>
-                  <label for="handle">Messenger / Discord Handle (Optional)</label>
-                  <input id="handle" name="handle" type="text" placeholder="@username or Discord tag" />
+                  <label for="event">Event</label>
+                  <input id="event" name="event" placeholder="e.g. K-pop World Tour – Manila" required />
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div>
-                  <label for="event-name">Event</label>
-                  <input id="event-name" name="eventName" type="text"
-                    placeholder="e.g. SEVENTEEN in Manila Day 1" required />
+                  <label for="tickets">No. of Tickets</label>
+                  <input id="tickets" name="tickets" type="number" min="1" value="1" required />
                 </div>
                 <div>
-                  <label for="city-date">City / Date</label>
-                  <input id="city-date" name="cityDate" type="text" placeholder="e.g. MOA Arena · Jan 15, 2026" />
+                  <label for="section">Preferred Section / Seating</label>
+                  <input id="section" name="section" placeholder="e.g. VIP 1, Lower Box A, etc." />
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div>
-                  <label for="section">Section / Seat Preference</label>
-                  <input id="section" name="section" type="text"
-                    placeholder="e.g. VIP Standing, Lower Box A, etc." />
+                  <label for="ticketPlatform">Ticketing Platform</label>
+                  <select id="ticketPlatform" name="ticketPlatform" required>
+                    <option value="" disabled selected>Select platform</option>
+                    <option value="SM_TICKETS">SM Tickets</option>
+                    <option value="TICKETNET">TicketNet</option>
+                    <option value="PULP_TICKETS">PULP Tickets</option>
+                  </select>
                 </div>
                 <div>
-                  <label for="payment-method">Preferred Payment Method</label>
-                  <select id="payment-method" name="paymentMethod" required>
-                    <option value="">Select a payment method</option>
-                    <option value="GCash">GCash</option>
-                    <option value="Maya">Maya</option>
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="Bank Transfer">Bank Transfer</option>
+                  <label for="paymentMethod">Preferred Payment Method</label>
+                  <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="" disabled selected>Select payment method</option>
+                    <option value="GCASH">GCash</option>
+                    <option value="MAYA">Maya</option>
+                    <option value="CARD">Credit / Debit Card</option>
+                    <option value="BANK_TRANSFER">Bank Transfer</option>
                   </select>
                 </div>
               </div>
 
-              <div class="form-row-2">
-                <div>
-                  <label for="platform">Ticketing Platform</label>
-                  <select id="platform" name="platform" required>
-                    <option value="">Select platform</option>
-                    <option value="SM Tickets">SM Tickets</option>
-                    <option value="Ticketnet">Ticketnet</option>
-                    <option value="PULP Tickets">PULP Tickets</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="quantity">Number of Tickets (Target)</label>
-                  <input id="quantity" name="quantity" type="number" min="1" placeholder="e.g. 2" />
+              <div id="sm-fields" class="conditional-group" style="display:none;">
+                <div class="conditional-group-title">SM Tickets Account Details</div>
+                <div class="form-row-2">
+                  <div>
+                    <label for="smUsername">SM Tickets Username</label>
+                    <input id="smUsername" name="smUsername" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label for="smPassword">SM Tickets Password</label>
+                    <input id="smPassword" name="smPassword" type="password" autocomplete="off" />
+                  </div>
                 </div>
               </div>
 
-              <!-- Platform specific fields -->
-              <div id="platform-fields" class="form-row-2"
-                style="display:none; margin-top:0.75rem;">
-                <!-- Content will be injected by JS -->
+              <div id="ticketnet-fields" class="conditional-group" style="display:none;">
+                <div class="conditional-group-title">TicketNet Account Details</div>
+                <div class="form-row-2">
+                  <div>
+                    <label for="ticketnetAccount">TicketNet Email / Username</label>
+                    <input id="ticketnetAccount" name="ticketnetAccount" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label for="ticketnetPassword">TicketNet Password</label>
+                    <input id="ticketnetPassword" name="ticketnetPassword" type="password" autocomplete="off" />
+                  </div>
+                </div>
+              </div>
+
+              <div id="pulp-fields" class="conditional-group" style="display:none;">
+                <div class="conditional-group-title">PULP Tickets Account Details</div>
+                <div class="form-row-2">
+                  <div>
+                    <label for="pulpUsername">PULP Tickets Username</label>
+                    <input id="pulpUsername" name="pulpUsername" autocomplete="off" />
+                  </div>
+                  <div>
+                    <label for="pulpPassword">PULP Tickets Password</label>
+                    <input id="pulpPassword" name="pulpPassword" type="password" autocomplete="off" />
+                  </div>
+                </div>
               </div>
 
               <div>
                 <label for="notes">Notes / Special Requests</label>
-                <textarea id="notes" name="notes"
-                  placeholder="Seat preferences, presale codes, preferred sections, etc."></textarea>
+                <textarea id="notes" name="notes" placeholder="Seat preferences, fan club presale codes, multiple show dates, etc."></textarea>
               </div>
 
               <div class="small-hint">
-                After submission, you’ll see a confirmation on this page. We’ll also log your request to Google Sheets.
+                After submission, we’ll review your details and email you the quote, priority status, and next steps.
               </div>
 
-              <button class="btn-submit" type="submit">Submit Ticket Request</button>
+              <button class="btn-submit" type="submit">Submit Request</button>
+
               <div id="new-order-status" class="portal-status" style="display:none;"></div>
             </form>
           </div>
@@ -1110,15 +920,14 @@
             <form id="track-form">
               <div>
                 <label for="order-id">Order ID</label>
-                <input id="order-id" name="orderId" type="text" placeholder="e.g. EZ-2025-0001" required />
+                <input id="order-id" name="orderId" placeholder="e.g. SAMPLE123" required />
               </div>
               <div>
-                <label for="track-email">Email Address</label>
-                <input id="track-email" name="email" type="email"
-                  placeholder="Email used when you placed the request" required />
+                <label for="track-email">Email</label>
+                <input id="track-email" name="trackEmail" type="email" required />
               </div>
               <div class="small-hint">
-                For now this is a demo status checker. Later we’ll connect this to the same Google Sheet / database.
+                Demo tip: Try Order ID <strong>SAMPLE123</strong> to see a sample status.
               </div>
               <button class="btn-submit" type="submit">Check Status</button>
               <div id="track-status" class="portal-status" style="display:none;"></div>
@@ -1133,34 +942,37 @@
           <div>
             <div class="section-title">Modes of Payment</div>
             <div class="section-sub">
-              Flexible options so it’s easier for you to settle once your ticket is confirmed.
+              PH-friendly options. Exact account details will be sent after we confirm your request.
             </div>
           </div>
           <div class="section-header-right">
-            Note: Payment is only required once we’ve confirmed a successful booking or assistance.
+            You can later replace this with your exact account numbers & QR codes.
           </div>
         </div>
 
-        <div class="pay-grid">
+        <div class="payments-row">
           <div class="pay-card">
-            <div class="pay-label">Preferred for PH clients</div>
-            <div class="pay-main">GCash</div>
-            <div class="small-hint">Fast, hassle-free, and easy to verify.</div>
+            <div class="pay-label">E-wallet</div>
+            <div class="pay-main">GCash / Maya</div>
+            <div class="small-hint">Downpayment & full payment accepted.</div>
           </div>
+
           <div class="pay-card">
-            <div class="pay-label">Alternative e-wallet</div>
-            <div class="pay-main">Maya</div>
-            <div class="small-hint">Ideal if you mainly use Maya for bills and spending.</div>
+            <div class="pay-label">Bank Transfer</div>
+            <div class="pay-main">BPI / BDO / Other PH Banks</div>
+            <div class="small-hint">Details sent via email upon confirmation.</div>
           </div>
+
           <div class="pay-card">
-            <div class="pay-label">For bigger transactions</div>
-            <div class="pay-main">Bank Transfer</div>
-            <div class="small-hint">BDO / BPI / other banks (details sent after confirmation).</div>
+            <div class="pay-label">Card / Online</div>
+            <div class="pay-main">Credit / Debit via partner gateways</div>
+            <div class="small-hint">Subject to convenience fees.</div>
           </div>
+
           <div class="pay-card">
-            <div class="pay-label">Other options</div>
-            <div class="pay-main">Credit Card (via official platform)</div>
-            <div class="small-hint">We use your official platform account for card payments.</div>
+            <div class="pay-label">Cash Options</div>
+            <div class="pay-main">Cash on Meet-up (Selected Events)</div>
+            <div class="small-hint">For trusted repeat clients only.</div>
           </div>
         </div>
       </section>
@@ -1171,193 +983,202 @@
           <div>
             <div class="section-title">Contact & Inquiries</div>
             <div class="section-sub">
-              Have a special request, bulk coordination, or questions about the process? Reach out and we’ll walk you
-              through the flow.
+              Send us a message with the event, date, and preferred section — we’ll take it from there.
             </div>
-          </div>
-          <div class="section-header-right">
-            You can also add a “Join my Discord channel” CTA here once everything is finalized.
           </div>
         </div>
 
-        <div class="contact-cols">
-          <div class="contact-list">
-            <div class="contact-item">
-              <div class="contact-bullet">✉️</div>
-              <div>
-                <strong>Email</strong><br />
-                ezticketsmnl@example.com
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-bullet">💬</div>
-              <div>
-                <strong>Messenger</strong><br />
-                Link your official FB Page / profile here.
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-bullet">📱</div>
-              <div>
-                <strong>Discord</strong><br />
-                “Join our server for priority announcements & queue updates.”
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="small-hint" style="margin-bottom:0.35rem;">
-              Suggested social links:
-            </div>
-            <div class="social-row">
-              <span class="social-pill">Facebook Page</span>
-              <span class="social-pill">Instagram</span>
-              <span class="social-pill">Discord Server</span>
-              <span class="social-pill">TikTok</span>
-            </div>
-            <div class="small-hint" style="margin-top:0.5rem;">
-              Tip: Replace these with your real socials, then add your Messenger / WhatsApp chat buttons.
-            </div>
+        <div style="font-size:0.85rem;color:var(--muted);display:flex;flex-direction:column;gap:0.35rem;">
+          <div><strong>Email:</strong> your-email@example.com</div>
+          <div><strong>Messenger Page:</strong> fb.me/yourticketpage</div>
+          <div><strong>Instagram:</strong> @yourticketinghandle</div>
+          <div class="small-hint">
+            Tip: Replace these with your real socials, then add your Messenger / WhatsApp chat buttons.
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <div>© <span id="year"></span> EZ Tickets MNL · All rights reserved.</div>
+      <div>© <span id="year"></span> Loi Ticket Assist · All rights reserved.</div>
       <div>Service-based ticketing assistance only. We do not represent any official ticketing platform.</div>
     </footer>
   </div>
 
   <script>
-    // -------- CONFIG --------
+    // Auto year in footer
+    (function () {
+      var yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    })();
+
+    // Google Apps Script endpoint
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuvPaDbaLATs2oZk8FL1javPHIJyTm2TlGZ4EK65cL7nGzvhrU3qPffqNM0GgfA5yM/exec";
 
-    // Year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Handle dynamic ticketing platform fields
+    (function () {
+      const platformSelect = document.getElementById("ticketPlatform");
+      const smFields = document.getElementById("sm-fields");
+      const ticketnetFields = document.getElementById("ticketnet-fields");
+      const pulpFields = document.getElementById("pulp-fields");
 
-    // -------- PLATFORM-SPECIFIC FIELDS --------
-    const platformSelect = document.getElementById("platform");
-    const platformFields = document.getElementById("platform-fields");
+      if (!platformSelect) return;
 
-    function renderPlatformFields(platform) {
-      if (!platform) {
-        platformFields.style.display = "none";
-        platformFields.innerHTML = "";
-        return;
+      function hideAll() {
+        if (smFields) smFields.style.display = "none";
+        if (ticketnetFields) ticketnetFields.style.display = "none";
+        if (pulpFields) pulpFields.style.display = "none";
       }
 
-      let html = "";
-
-      if (platform === "SM Tickets") {
-        html = `
-          <div>
-            <label for="sm-username">SM Tickets Username</label>
-            <input id="sm-username" name="smUsername" type="text" placeholder="SM Tickets username" />
-          </div>
-          <div>
-            <label for="sm-password">SM Tickets Password</label>
-            <input id="sm-password" name="smPassword" type="password" placeholder="SM Tickets password" />
-          </div>
-        `;
-      } else if (platform === "Ticketnet") {
-        html = `
-          <div>
-            <label for="ticketnet-account">Ticketnet Email / Username</label>
-            <input id="ticketnet-account" name="ticketnetAccount" type="text" placeholder="Ticketnet email or username" />
-          </div>
-          <div>
-            <label for="ticketnet-password">Ticketnet Password</label>
-            <input id="ticketnet-password" name="ticketnetPassword" type="password" placeholder="Ticketnet password" />
-          </div>
-        `;
-      } else if (platform === "PULP Tickets") {
-        html = `
-          <div>
-            <label for="pulp-username">PULP Tickets Username</label>
-            <input id="pulp-username" name="pulpUsername" type="text" placeholder="PULP Tickets username" />
-          </div>
-          <div>
-            <label for="pulp-password">PULP Tickets Password</label>
-            <input id="pulp-password" name="pulpPassword" type="password" placeholder="PULP Tickets password" />
-          </div>
-        `;
+      function updatePlatformFields() {
+        hideAll();
+        const value = platformSelect.value;
+        if (value === "SM_TICKETS" && smFields) {
+          smFields.style.display = "block";
+        } else if (value === "TICKETNET" && ticketnetFields) {
+          ticketnetFields.style.display = "block";
+        } else if (value === "PULP_TICKETS" && pulpFields) {
+          pulpFields.style.display = "block";
+        }
       }
 
-      platformFields.innerHTML = html;
-      platformFields.style.display = "grid";
-    }
+      platformSelect.addEventListener("change", updatePlatformFields);
+      // Initialize state on load
+      updatePlatformFields();
+    })();
 
-    if (platformSelect && platformFields) {
-      platformSelect.addEventListener("change", function () {
-        renderPlatformFields(this.value);
-      });
-    }
+    // Submit new order to Apps Script
+    (function () {
+      const form = document.getElementById("new-order-form");
+      if (!form) return;
 
-    // -------- SUBMIT NEW ORDER TO APPS SCRIPT --------
-    const newOrderForm = document.getElementById("new-order-form");
-    const newOrderStatus = document.getElementById("new-order-status");
+      const statusBox = document.getElementById("new-order-status");
 
-    if (newOrderForm) {
-      newOrderForm.addEventListener("submit", async function (e) {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
-        if (!SCRIPT_URL) return;
+        if (!statusBox) return;
 
-        newOrderStatus.style.display = "block";
-        newOrderStatus.innerHTML = "⏳ Submitting your request… please wait.";
+        statusBox.style.display = "block";
+        statusBox.innerHTML = "⏳ Submitting your request… Please wait.";
 
-        const formData = new FormData(newOrderForm);
-        const payload = {};
-        formData.forEach((value, key) => {
-          payload[key] = value;
-        });
+        const payload = {
+          action: "create_order",
+          source: "website",
+          timestamp: new Date().toISOString(),
+          firstName: (form.firstName?.value || "").trim(),
+          lastName: (form.lastName?.value || "").trim(),
+          email: (form.email?.value || "").trim(),
+          event: (form.event?.value || "").trim(),
+          tickets: (form.tickets?.value || "").trim(),
+          section: (form.section?.value || "").trim(),
+          ticketPlatform: form.ticketPlatform?.value || "",
+          paymentMethod: form.paymentMethod?.value || "",
+          smUsername: (form.smUsername?.value || "").trim(),
+          smPassword: (form.smPassword?.value || "").trim(),
+          ticketnetAccount: (form.ticketnetAccount?.value || "").trim(),
+          ticketnetPassword: (form.ticketnetPassword?.value || "").trim(),
+          pulpUsername: (form.pulpUsername?.value || "").trim(),
+          pulpPassword: (form.pulpPassword?.value || "").trim(),
+          notes: (form.notes?.value || "").trim()
+        };
 
         try {
           const response = await fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // response body may not be readable, pero papasok pa rin sa Apps Script
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json"
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(payload)
           });
 
-          // With no-cors we can't reliably read the response, so generic success na lang.
-          newOrderStatus.innerHTML =
-            "✅ Request submitted! Please check your email or Discord within 24 hours for the quote and next steps.";
-          newOrderForm.reset();
-          renderPlatformFields("");
+          let message = "Your request was submitted successfully. Please check your email for confirmation once processed.";
+
+          // Try to read JSON response if Apps Script returns one
+          try {
+            const data = await response.json();
+            if (data && data.message) {
+              message = data.message;
+            }
+            if (data && data.orderId) {
+              message += "<br/><strong>Your Order ID:</strong> " + data.orderId;
+            }
+          } catch (err) {
+            // If response is not JSON, ignore and keep default message
+          }
+
+          statusBox.innerHTML = "✅ " + message;
+          form.reset();
+
+          // Reset conditional fields visibility after reset
+          const platformSelect = document.getElementById("ticketPlatform");
+          if (platformSelect) {
+            platformSelect.dispatchEvent(new Event("change"));
+          }
         } catch (err) {
-          console.error(err);
-          newOrderStatus.innerHTML =
-            "⚠️ There was a problem submitting your request. Please try again or message us directly on Messenger / Discord.";
+          console.error("Order submission error:", err);
+          statusBox.innerHTML =
+            "⚠️ There was a problem submitting your request. " +
+            "Please try again or message us directly on Discord / Facebook.<br/><small>" +
+            (err && err.message ? err.message : "") +
+            "</small>";
         }
       });
-    }
+    })();
 
-    // -------- SIMPLE DEMO TRACKING (FRONTEND ONLY FOR NOW) --------
-    const trackForm = document.getElementById("track-form");
-    const trackStatus = document.getElementById("track-status");
+    // Track existing order via Apps Script
+    (function () {
+      const form = document.getElementById("track-form");
+      const statusBox = document.getElementById("track-status");
+      if (!form || !statusBox) return;
 
-    if (trackForm) {
-      trackForm.addEventListener("submit", function (e) {
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
-        trackStatus.style.display = "block";
+        statusBox.style.display = "block";
+        statusBox.innerHTML = "⏳ Checking your order…";
 
-        const orderId = document.getElementById("order-id").value.trim();
-        if (orderId === "SAMPLE123") {
-          trackStatus.innerHTML =
-            "🔍 <strong>Order Found:</strong><br/>" +
-            "<strong>Status:</strong> Confirmed – Waiting for Payment<br/>" +
-            "<strong>Event:</strong> K-pop World Tour – Manila<br/>" +
-            "<strong>Next Step:</strong> Please settle payment within 24 hours to lock your slot.";
-        } else {
-          trackStatus.innerHTML =
-            "⚠️ For now this is a demo tracker only.<br/>" +
-            "In the next step, we'll connect this to the same Google Sheet used by the Apps Script backend.";
+        const payload = {
+          action: "track_order",
+          orderId: (form.orderId?.value || "").trim(),
+          email: (form.trackEmail?.value || "").trim()
+        };
+
+        try {
+          const response = await fetch(SCRIPT_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          try {
+            const data = await response.json();
+            if (data && data.found) {
+              statusBox.innerHTML =
+                "🔍 <strong>Order Found</strong><br/>" +
+                "<strong>Status:</strong> " + (data.status || "Processing") + "<br/>" +
+                (data.event ? "<strong>Event:</strong> " + data.event + "<br/>" : "") +
+                (data.nextStep ? "<strong>Next Step:</strong> " + data.nextStep : "");
+            } else {
+              statusBox.innerHTML =
+                "⚠️ No matching order found for that Order ID and email.<br/>" +
+                "Please double-check your details or contact us directly so we can assist.";
+            }
+          } catch (err) {
+            // If Apps Script is not yet returning JSON, show a generic message
+            statusBox.innerHTML =
+              "ℹ️ Tracking is connected, but the response format isn't set up yet.<br/>" +
+              "For now, please DM us on Discord / Facebook with your Order ID and email.";
+          }
+        } catch (err) {
+          console.error("Track order error:", err);
+          statusBox.innerHTML =
+            "⚠️ Unable to reach the tracking server right now. Please try again later or message us directly.";
         }
       });
-    }
+    })();
   </script>
 </body>
 </html>
